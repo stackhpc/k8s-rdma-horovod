@@ -1,0 +1,4 @@
+[submodule "stable-helm-charts"]
+	path = charts
+	url = https://github.com/stackhpc/stable-helm-charts
+	branch = horovod

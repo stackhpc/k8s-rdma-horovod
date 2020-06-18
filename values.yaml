@@ -1,0 +1,69 @@
+---
+ssh:
+  port: 2222
+  useSecrets: true
+  hostKey: |-
+    -----BEGIN RSA PRIVATE KEY-----
+    MIIEpQIBAAKCAQEA1WPIldPFCaFTCeOlmxSjL28LbR58z7NQey0n6843PVJqxwpo
+    mIkoH//dxNagJMwVtJvcJ27Cd3/pP6UP156Jx9mTCVvAr4bw7dGDhkSjG/SwaML3
+    3SJ/c3UqMuQgNvrLa/dHDo0vp0jSPfUJWOntm8X6+XqKReSi3eyD4vvLC5iryYm3
+    BQui5dkTySHVGoHtPtHscG/l9jeY3lHtQwmWVrld+WhcIn+kD8OW7b5ex2ky55yq
+    WHXCLQFk3Zi2Sd3KVMz2o8xUugFxTASENNZeIQSuHnVRkq+ooWS3AB4WhAszX67K
+    Kl+cYdigUcnCwZ0gq19YrcJhqGNSl/p1GYOZNQIDAQABAoIBACc91mFXNGD0/eRP
+    rOC8BtZuQVerx6Aaha5hO3otzhLE2UYJL/r9HhfkYdAU+BZMQaGZF/9YawK2zxoZ
+    LLSmPwg1hsityt18n0ncwacrcCNv+BEL6bEM6ws8fKonMZVqwYX1T2fppt3IkoE6
+    UqG7QyrmWaUPV+ZKiXjuScKwM0LKVrQ0babtDGF500S5XZUqnrbRTlLBCzNb354L
+    XAAwb+CcHlvYtabzZh/L95aLFIi0qfESBBq3yFP/KfoYErvvjK0C/nEOYuAuKait
+    nXKVNjhvuJNlzgw5DwqXiVKMIxuVryQKyAG3/N7q4j6hXapJ0jcjiNXbHL/fuP97
+    YdS1dgECgYEA7P97P92FbeTvKGVnq5DCXUcrzqcEPYEXUP95wAuU3Y/t3Oyr0mpW
+    P5V6wh0G5iuvsfVIMtLxRjcz+RqTToLRfXIsQtK9XmGJ+w0xY28bKOn0S6I+Syfo
+    qIt0bIHrtr1HyiL9PMmOwJTKdhlN6V3XK4V9xmF0Iml1wdeEWENtGVUCgYEA5n+6
+    /X99o+oYom9wXQ7iZo8ObehcfiLmRXNioFqfSbRxSwM9e7UUo1502zglxoaguPyc
+    k8yiwIgfilKRlI3RaA/r0r4tuJs6Kbdn21oGIUxZWShjhB9Y5rBD+8Vd11QLJhP0
+    VXXjJ/P5fmORw4+gTq5MScsTJBQYdE4s2ER5AGECgYEAzW2agL5cVOh3ITXcycr9
+    nur9HvCIbWODOXNpLj0buX1zuebv/MCtqAnC0ZVlkIfXkFLDVUKhXrKk+0y82PXt
+    7mXT1cxj1vaHKrTB1aXODgXU+uZURsL+GXJf5VosXkbtflob1eAEPAv8/qdqcFkm
+    FJRudFGu39E4AGD2V6eCXs0CgYEA2e+ZUIgTtkDn6+Wr+wDQxaGrRfX2Rfkfejkf
+    3nfwtdKbcA5vOqE7E0CDAqcy6GNwYZfPP9uzYpESKUnqhegVP+wV0BuqxSpXswvL
+    cdXLh/5VWHxco5a0CuJMVSgGk0rOg8FIOumMzsDafEsOjjYln18jmH4e6fTqLkWg
+    FxeexOECgYEApTftJegWxN13Ahcyc4Ef8D4p5wKxkiA105kvdp9z580dypVTYP+6
+    vzOdcxWitfpcFP6ljRwkgplKDXvoj3lRHR34/ab05yA5k7dU9iECoXyjjg5ugqm5
+    r9G1ahpZLC8thDtSD40VF0A/5VmV64de/+onX/dHtp5A099BVtTY7rk=
+    -----END RSA PRIVATE KEY-----
+
+  hostKeyPub: |-
+    ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDVY8iV08UJoVMJ46WbFKMvbwttHnzPs1B7LSfrzjc9UmrHCmiYiSgf/93E1qAkzBW0m9wnbsJ3f+k/pQ/XnonH2ZMJW8CvhvDt0YOGRKMb9LBowvfdIn9zdSoy5CA2+str90cOjS+nSNI99QlY6e2bxfr5eopF5KLd7IPi+8sLmKvJibcFC6Ll2RPJIdUage0+0exwb+X2N5jeUe1DCZZWuV35aFwif6QPw5btvl7HaTLnnKpYdcItAWTdmLZJ3cpUzPajzFS6AXFMBIQ01l4hBK4edVGSr6ihZLcAHhaECzNfrsoqX5xh2KBRycLBnSCrX1itwmGoY1KX+nUZg5k1 bharat@openhpc-login-0.novalocal
+
+annotations:
+  #k8s.v1.cni.cncf.io/networks: sriov-ib
+  #k8s.v1.cni.cncf.io/networks: sriov-roce
+
+resources:
+  limits:
+    nvidia.com/gpu: 4
+    mellanox.com/sriov_roce: 0
+    mellanox.com/sriov_ib: 0
+  requests:
+    nvidia.com/gpu: 4
+    mellanox.com/sriov_roce: 0
+    mellanox.com/sriov_ib: 0
+
+useHostNetwork: false
+
+capabilities:
+  add: ["IPC_LOCK"]
+  
+worker:
+  number: 1
+  image:
+    repository: stackhpc/horovod
+    tag: 0.19.3-tf2.1.0-torch-mxnet1.6.0-py3.6-gpu
+    pullPolicy: Always
+master:
+  image:
+    repository: stackhpc/horovod
+    tag: 0.19.3-tf2.1.0-torch-mxnet1.6.0-py3.6-gpu
+    pullPolicy: Always
+  args:
+    - "mpirun -np 8 -x NCCL_DEBUG=INFO -x PATH -x LD_LIBRARY_PATH -x HOROVOD_MPI_THREADS_DISABLE=1 --bind-to none --map-by slot --mca pml ob1 --hostfile /horovod/generated/hostfile --mca orte_keep_fqdn_hostnames t --allow-run-as-root --display-map --tag-output --timestamp-output sh -c 'python /examples/tensorflow2_synthetic_benchmark.py'"
+    #- "mpirun -np 3 -x PATH -x LD_LIBRARY_PATH --hostfile /horovod/generated/hostfile --mca orte_keep_fqdn_hostnames t --allow-run-as-root --display-map --tag-output --timestamp-output sh -c 'python /examples/pytorch_mnist.py'"
