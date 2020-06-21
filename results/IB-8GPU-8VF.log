@@ -1,0 +1,942 @@
++ sleep 5
++ mkdir -p /root/.ssh
++ rm -f /root/.ssh/config
++ touch /root/.ssh/config
++ '[' true == true ']'
++ set +e
++ yes
++ cp /etc/secret-volume/id_rsa /root/.ssh/id_rsa
++ yes
++ cp /etc/secret-volume/authorized_keys /root/.ssh/authorized_keys
++ set -e
++ '[' -n 22 ']'
++ echo 'Port 22'
++ sed -i 's/^Port.*/Port 22 /g' /etc/ssh/sshd_config
++ echo 'StrictHostKeyChecking no'
++ /usr/sbin/sshd
++ '[' 1 -eq 0 ']'
++ bash -c 'mpirun -np 8 -x NCCL_DEBUG=INFO -x PATH -x LD_LIBRARY_PATH -x HOROVOD_MPI_THREADS_DISABLE=1 -bind-to none -map-by slot -mca pml ob1 --hostfile /horovod/generated/hostfile --mca orte_keep_fqdn_hostnames t --allow-run-as-root --display-map --tag-output --timestamp-output sh -c '\''python /examples/tensorflow2_synthetic_benchmark.py'\'''
+Warning: Permanently added 'tf2-horovod-0.tf2-horovod,10.233.99.9' (ECDSA) to the list of known hosts.
+Warning: Permanently added 'tf2-horovod-6.tf2-horovod,10.233.99.11' (ECDSA) to the list of known hosts.
+Warning: Permanently added 'tf2-horovod-4.tf2-horovod,10.233.99.10' (ECDSA) to the list of known hosts.
+Warning: Permanently added 'tf2-horovod-2.tf2-horovod,10.233.99.1' (ECDSA) to the list of known hosts.
+Warning: Permanently added 'tf2-horovod-3.tf2-horovod,10.233.64.152' (ECDSA) to the list of known hosts.
+Warning: Permanently added 'tf2-horovod-5.tf2-horovod,10.233.64.151' (ECDSA) to the list of known hosts.
+Warning: Permanently added 'tf2-horovod-1.tf2-horovod,10.233.64.150' (ECDSA) to the list of known hosts.
+ Data for JOB [56989,1] offset 0 Total slots allocated 8
+
+ ========================   JOB MAP   ========================
+
+ Data for node: tf2-horovod-lsczz	Num slots: 1	Max slots: 0	Num procs: 1
+ 	Process OMPI jobid: [56989,1] App: 0 Process rank: 0 Bound: N/A
+
+ Data for node: tf2-horovod-0.tf2-horovod	Num slots: 1	Max slots: 0	Num procs: 1
+ 	Process OMPI jobid: [56989,1] App: 0 Process rank: 1 Bound: N/A
+
+ Data for node: tf2-horovod-1.tf2-horovod	Num slots: 1	Max slots: 0	Num procs: 1
+ 	Process OMPI jobid: [56989,1] App: 0 Process rank: 2 Bound: N/A
+
+ Data for node: tf2-horovod-2.tf2-horovod	Num slots: 1	Max slots: 0	Num procs: 1
+ 	Process OMPI jobid: [56989,1] App: 0 Process rank: 3 Bound: N/A
+
+ Data for node: tf2-horovod-3.tf2-horovod	Num slots: 1	Max slots: 0	Num procs: 1
+ 	Process OMPI jobid: [56989,1] App: 0 Process rank: 4 Bound: N/A
+
+ Data for node: tf2-horovod-4.tf2-horovod	Num slots: 1	Max slots: 0	Num procs: 1
+ 	Process OMPI jobid: [56989,1] App: 0 Process rank: 5 Bound: N/A
+
+ Data for node: tf2-horovod-5.tf2-horovod	Num slots: 1	Max slots: 0	Num procs: 1
+ 	Process OMPI jobid: [56989,1] App: 0 Process rank: 6 Bound: N/A
+
+ Data for node: tf2-horovod-6.tf2-horovod	Num slots: 1	Max slots: 0	Num procs: 1
+ 	Process OMPI jobid: [56989,1] App: 0 Process rank: 7 Bound: N/A
+
+ =============================================================
+ Data for JOB [56989,1] offset 0 Total slots allocated 8
+
+ ========================   JOB MAP   ========================
+
+ Data for node: tf2-horovod-lsczz	Num slots: 1	Max slots: 0	Num procs: 1
+ 	Process OMPI jobid: [56989,1] App: 0 Process rank: 0 Bound: N/A
+
+ Data for node: tf2-horovod-0.tf2-horovod	Num slots: 1	Max slots: 0	Num procs: 1
+ 	Process OMPI jobid: [56989,1] App: 0 Process rank: 1 Bound: N/A
+
+ Data for node: tf2-horovod-1.tf2-horovod	Num slots: 1	Max slots: 0	Num procs: 1
+ 	Process OMPI jobid: [56989,1] App: 0 Process rank: 2 Bound: N/A
+
+ Data for node: tf2-horovod-2.tf2-horovod	Num slots: 1	Max slots: 0	Num procs: 1
+ 	Process OMPI jobid: [56989,1] App: 0 Process rank: 3 Bound: N/A
+
+ Data for node: tf2-horovod-3.tf2-horovod	Num slots: 1	Max slots: 0	Num procs: 1
+ 	Process OMPI jobid: [56989,1] App: 0 Process rank: 4 Bound: N/A
+
+ Data for node: tf2-horovod-4.tf2-horovod	Num slots: 1	Max slots: 0	Num procs: 1
+ 	Process OMPI jobid: [56989,1] App: 0 Process rank: 5 Bound: N/A
+
+ Data for node: tf2-horovod-5.tf2-horovod	Num slots: 1	Max slots: 0	Num procs: 1
+ 	Process OMPI jobid: [56989,1] App: 0 Process rank: 6 Bound: N/A
+
+ Data for node: tf2-horovod-6.tf2-horovod	Num slots: 1	Max slots: 0	Num procs: 1
+ 	Process OMPI jobid: [56989,1] App: 0 Process rank: 7 Bound: N/A
+
+ =============================================================
+ Data for JOB [56989,1] offset 0 Total slots allocated 8
+
+ ========================   JOB MAP   ========================
+
+ Data for node: tf2-horovod-lsczz	Num slots: 1	Max slots: 0	Num procs: 1
+ 	Process OMPI jobid: [56989,1] App: 0 Process rank: 0 Bound: N/A
+
+ Data for node: tf2-horovod-0.tf2-horovod	Num slots: 1	Max slots: 0	Num procs: 1
+ 	Process OMPI jobid: [56989,1] App: 0 Process rank: 1 Bound: N/A
+
+ Data for node: tf2-horovod-1.tf2-horovod	Num slots: 1	Max slots: 0	Num procs: 1
+ 	Process OMPI jobid: [56989,1] App: 0 Process rank: 2 Bound: N/A
+
+ Data for node: tf2-horovod-2.tf2-horovod	Num slots: 1	Max slots: 0	Num procs: 1
+ 	Process OMPI jobid: [56989,1] App: 0 Process rank: 3 Bound: N/A
+
+ Data for node: tf2-horovod-3.tf2-horovod	Num slots: 1	Max slots: 0	Num procs: 1
+ 	Process OMPI jobid: [56989,1] App: 0 Process rank: 4 Bound: N/A
+
+ Data for node: tf2-horovod-4.tf2-horovod	Num slots: 1	Max slots: 0	Num procs: 1
+ 	Process OMPI jobid: [56989,1] App: 0 Process rank: 5 Bound: N/A
+
+ Data for node: tf2-horovod-5.tf2-horovod	Num slots: 1	Max slots: 0	Num procs: 1
+ 	Process OMPI jobid: [56989,1] App: 0 Process rank: 6 Bound: N/A
+
+ Data for node: tf2-horovod-6.tf2-horovod	Num slots: 1	Max slots: 0	Num procs: 1
+ 	Process OMPI jobid: [56989,1] App: 0 Process rank: 7 Bound: N/A
+
+ =============================================================
+ Data for JOB [56989,1] offset 0 Total slots allocated 8
+
+ ========================   JOB MAP   ========================
+
+ Data for node: tf2-horovod-lsczz	Num slots: 1	Max slots: 0	Num procs: 1
+ 	Process OMPI jobid: [56989,1] App: 0 Process rank: 0 Bound: N/A
+
+ Data for node: tf2-horovod-0.tf2-horovod	Num slots: 1	Max slots: 0	Num procs: 1
+ 	Process OMPI jobid: [56989,1] App: 0 Process rank: 1 Bound: N/A
+
+ Data for node: tf2-horovod-1.tf2-horovod	Num slots: 1	Max slots: 0	Num procs: 1
+ 	Process OMPI jobid: [56989,1] App: 0 Process rank: 2 Bound: N/A
+
+ Data for node: tf2-horovod-2.tf2-horovod	Num slots: 1	Max slots: 0	Num procs: 1
+ 	Process OMPI jobid: [56989,1] App: 0 Process rank: 3 Bound: N/A
+
+ Data for node: tf2-horovod-3.tf2-horovod	Num slots: 1	Max slots: 0	Num procs: 1
+ 	Process OMPI jobid: [56989,1] App: 0 Process rank: 4 Bound: N/A
+
+ Data for node: tf2-horovod-4.tf2-horovod	Num slots: 1	Max slots: 0	Num procs: 1
+ 	Process OMPI jobid: [56989,1] App: 0 Process rank: 5 Bound: N/A
+
+ Data for node: tf2-horovod-5.tf2-horovod	Num slots: 1	Max slots: 0	Num procs: 1
+ 	Process OMPI jobid: [56989,1] App: 0 Process rank: 6 Bound: N/A
+
+ Data for node: tf2-horovod-6.tf2-horovod	Num slots: 1	Max slots: 0	Num procs: 1
+ 	Process OMPI jobid: [56989,1] App: 0 Process rank: 7 Bound: N/A
+
+ =============================================================
+ Data for JOB [56989,1] offset 0 Total slots allocated 8
+
+ ========================   JOB MAP   ========================
+
+ Data for node: tf2-horovod-lsczz	Num slots: 1	Max slots: 0	Num procs: 1
+ 	Process OMPI jobid: [56989,1] App: 0 Process rank: 0 Bound: N/A
+
+ Data for node: tf2-horovod-0.tf2-horovod	Num slots: 1	Max slots: 0	Num procs: 1
+ 	Process OMPI jobid: [56989,1] App: 0 Process rank: 1 Bound: N/A
+
+ Data for node: tf2-horovod-1.tf2-horovod	Num slots: 1	Max slots: 0	Num procs: 1
+ 	Process OMPI jobid: [56989,1] App: 0 Process rank: 2 Bound: N/A
+
+ Data for node: tf2-horovod-2.tf2-horovod	Num slots: 1	Max slots: 0	Num procs: 1
+ 	Process OMPI jobid: [56989,1] App: 0 Process rank: 3 Bound: N/A
+
+ Data for node: tf2-horovod-3.tf2-horovod	Num slots: 1	Max slots: 0	Num procs: 1
+ 	Process OMPI jobid: [56989,1] App: 0 Process rank: 4 Bound: N/A
+
+ Data for node: tf2-horovod-4.tf2-horovod	Num slots: 1	Max slots: 0	Num procs: 1
+ 	Process OMPI jobid: [56989,1] App: 0 Process rank: 5 Bound: N/A
+
+ Data for node: tf2-horovod-5.tf2-horovod	Num slots: 1	Max slots: 0	Num procs: 1
+ 	Process OMPI jobid: [56989,1] App: 0 Process rank: 6 Bound: N/A
+
+ Data for node: tf2-horovod-6.tf2-horovod	Num slots: 1	Max slots: 0	Num procs: 1
+ 	Process OMPI jobid: [56989,1] App: 0 Process rank: 7 Bound: N/A
+
+ =============================================================
+ Data for JOB [56989,1] offset 0 Total slots allocated 8
+
+ ========================   JOB MAP   ========================
+
+ Data for node: tf2-horovod-lsczz	Num slots: 1	Max slots: 0	Num procs: 1
+ 	Process OMPI jobid: [56989,1] App: 0 Process rank: 0 Bound: N/A
+
+ Data for node: tf2-horovod-0.tf2-horovod	Num slots: 1	Max slots: 0	Num procs: 1
+ 	Process OMPI jobid: [56989,1] App: 0 Process rank: 1 Bound: N/A
+
+ Data for node: tf2-horovod-1.tf2-horovod	Num slots: 1	Max slots: 0	Num procs: 1
+ 	Process OMPI jobid: [56989,1] App: 0 Process rank: 2 Bound: N/A
+
+ Data for node: tf2-horovod-2.tf2-horovod	Num slots: 1	Max slots: 0	Num procs: 1
+ 	Process OMPI jobid: [56989,1] App: 0 Process rank: 3 Bound: N/A
+
+ Data for node: tf2-horovod-3.tf2-horovod	Num slots: 1	Max slots: 0	Num procs: 1
+ 	Process OMPI jobid: [56989,1] App: 0 Process rank: 4 Bound: N/A
+
+ Data for node: tf2-horovod-4.tf2-horovod	Num slots: 1	Max slots: 0	Num procs: 1
+ 	Process OMPI jobid: [56989,1] App: 0 Process rank: 5 Bound: N/A
+
+ Data for node: tf2-horovod-5.tf2-horovod	Num slots: 1	Max slots: 0	Num procs: 1
+ 	Process OMPI jobid: [56989,1] App: 0 Process rank: 6 Bound: N/A
+
+ Data for node: tf2-horovod-6.tf2-horovod	Num slots: 1	Max slots: 0	Num procs: 1
+ 	Process OMPI jobid: [56989,1] App: 0 Process rank: 7 Bound: N/A
+
+ =============================================================
+ Data for JOB [56989,1] offset 0 Total slots allocated 8
+
+ ========================   JOB MAP   ========================
+
+ Data for node: tf2-horovod-lsczz	Num slots: 1	Max slots: 0	Num procs: 1
+ 	Process OMPI jobid: [56989,1] App: 0 Process rank: 0 Bound: N/A
+
+ Data for node: tf2-horovod-0.tf2-horovod	Num slots: 1	Max slots: 0	Num procs: 1
+ 	Process OMPI jobid: [56989,1] App: 0 Process rank: 1 Bound: N/A
+
+ Data for node: tf2-horovod-1.tf2-horovod	Num slots: 1	Max slots: 0	Num procs: 1
+ 	Process OMPI jobid: [56989,1] App: 0 Process rank: 2 Bound: N/A
+
+ Data for node: tf2-horovod-2.tf2-horovod	Num slots: 1	Max slots: 0	Num procs: 1
+ 	Process OMPI jobid: [56989,1] App: 0 Process rank: 3 Bound: N/A
+
+ Data for node: tf2-horovod-3.tf2-horovod	Num slots: 1	Max slots: 0	Num procs: 1
+ 	Process OMPI jobid: [56989,1] App: 0 Process rank: 4 Bound: N/A
+
+ Data for node: tf2-horovod-4.tf2-horovod	Num slots: 1	Max slots: 0	Num procs: 1
+ 	Process OMPI jobid: [56989,1] App: 0 Process rank: 5 Bound: N/A
+
+ Data for node: tf2-horovod-5.tf2-horovod	Num slots: 1	Max slots: 0	Num procs: 1
+ 	Process OMPI jobid: [56989,1] App: 0 Process rank: 6 Bound: N/A
+
+ Data for node: tf2-horovod-6.tf2-horovod	Num slots: 1	Max slots: 0	Num procs: 1
+ 	Process OMPI jobid: [56989,1] App: 0 Process rank: 7 Bound: N/A
+
+ =============================================================
+ Data for JOB [56989,1] offset 0 Total slots allocated 8
+
+ ========================   JOB MAP   ========================
+
+ Data for node: tf2-horovod-lsczz	Num slots: 1	Max slots: 0	Num procs: 1
+ 	Process OMPI jobid: [56989,1] App: 0 Process rank: 0 Bound: N/A
+
+ Data for node: tf2-horovod-0.tf2-horovod	Num slots: 1	Max slots: 0	Num procs: 1
+ 	Process OMPI jobid: [56989,1] App: 0 Process rank: 1 Bound: N/A
+
+ Data for node: tf2-horovod-1.tf2-horovod	Num slots: 1	Max slots: 0	Num procs: 1
+ 	Process OMPI jobid: [56989,1] App: 0 Process rank: 2 Bound: N/A
+
+ Data for node: tf2-horovod-2.tf2-horovod	Num slots: 1	Max slots: 0	Num procs: 1
+ 	Process OMPI jobid: [56989,1] App: 0 Process rank: 3 Bound: N/A
+
+ Data for node: tf2-horovod-3.tf2-horovod	Num slots: 1	Max slots: 0	Num procs: 1
+ 	Process OMPI jobid: [56989,1] App: 0 Process rank: 4 Bound: N/A
+
+ Data for node: tf2-horovod-4.tf2-horovod	Num slots: 1	Max slots: 0	Num procs: 1
+ 	Process OMPI jobid: [56989,1] App: 0 Process rank: 5 Bound: N/A
+
+ Data for node: tf2-horovod-5.tf2-horovod	Num slots: 1	Max slots: 0	Num procs: 1
+ 	Process OMPI jobid: [56989,1] App: 0 Process rank: 6 Bound: N/A
+
+ Data for node: tf2-horovod-6.tf2-horovod	Num slots: 1	Max slots: 0	Num procs: 1
+ 	Process OMPI jobid: [56989,1] App: 0 Process rank: 7 Bound: N/A
+
+ =============================================================
+Fri Jun 19 09:22:55 2020[1,5]<stderr>:2020-06-19 09:22:55.594541: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libnvinfer.so.6'; dlerror: libnvinfer.so.6: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: /usr/local/lib:/usr/local/nvidia/lib:/usr/local/nvidia/lib64
+Fri Jun 19 09:22:55 2020[1,5]<stderr>:2020-06-19 09:22:55.594681: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libnvinfer_plugin.so.6'; dlerror: libnvinfer_plugin.so.6: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: /usr/local/lib:/usr/local/nvidia/lib:/usr/local/nvidia/lib64
+Fri Jun 19 09:22:55 2020[1,5]<stderr>:2020-06-19 09:22:55.594714: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:30] Cannot dlopen some TensorRT libraries. If you would like to use Nvidia GPU with TensorRT, please make sure the missing libraries mentioned above are installed properly.
+Fri Jun 19 09:22:55 2020[1,1]<stderr>:2020-06-19 09:22:55.602844: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libnvinfer.so.6'; dlerror: libnvinfer.so.6: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: /usr/local/lib:/usr/local/nvidia/lib:/usr/local/nvidia/lib64
+Fri Jun 19 09:22:55 2020[1,1]<stderr>:2020-06-19 09:22:55.602955: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libnvinfer_plugin.so.6'; dlerror: libnvinfer_plugin.so.6: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: /usr/local/lib:/usr/local/nvidia/lib:/usr/local/nvidia/lib64
+Fri Jun 19 09:22:55 2020[1,1]<stderr>:2020-06-19 09:22:55.602967: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:30] Cannot dlopen some TensorRT libraries. If you would like to use Nvidia GPU with TensorRT, please make sure the missing libraries mentioned above are installed properly.
+Fri Jun 19 09:22:55 2020[1,7]<stderr>:2020-06-19 09:22:55.632489: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libnvinfer.so.6'; dlerror: libnvinfer.so.6: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: /usr/local/lib:/usr/local/nvidia/lib:/usr/local/nvidia/lib64
+Fri Jun 19 09:22:55 2020[1,7]<stderr>:2020-06-19 09:22:55.632597: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libnvinfer_plugin.so.6'; dlerror: libnvinfer_plugin.so.6: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: /usr/local/lib:/usr/local/nvidia/lib:/usr/local/nvidia/lib64
+Fri Jun 19 09:22:55 2020[1,7]<stderr>:2020-06-19 09:22:55.632609: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:30] Cannot dlopen some TensorRT libraries. If you would like to use Nvidia GPU with TensorRT, please make sure the missing libraries mentioned above are installed properly.
+Fri Jun 19 09:22:55 2020[1,3]<stderr>:2020-06-19 09:22:55.704002: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libnvinfer.so.6'; dlerror: libnvinfer.so.6: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: /usr/local/lib:/usr/local/nvidia/lib:/usr/local/nvidia/lib64
+Fri Jun 19 09:22:55 2020[1,3]<stderr>:2020-06-19 09:22:55.704170: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libnvinfer_plugin.so.6'; dlerror: libnvinfer_plugin.so.6: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: /usr/local/lib:/usr/local/nvidia/lib:/usr/local/nvidia/lib64
+Fri Jun 19 09:22:55 2020[1,3]<stderr>:2020-06-19 09:22:55.704205: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:30] Cannot dlopen some TensorRT libraries. If you would like to use Nvidia GPU with TensorRT, please make sure the missing libraries mentioned above are installed properly.
+Fri Jun 19 09:22:56 2020[1,0]<stderr>:2020-06-19 09:22:56.098933: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libnvinfer.so.6'; dlerror: libnvinfer.so.6: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: /usr/local/lib:/usr/local/nvidia/lib:/usr/local/nvidia/lib64
+Fri Jun 19 09:22:56 2020[1,0]<stderr>:2020-06-19 09:22:56.099191: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libnvinfer_plugin.so.6'; dlerror: libnvinfer_plugin.so.6: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: /usr/local/lib:/usr/local/nvidia/lib:/usr/local/nvidia/lib64
+Fri Jun 19 09:22:56 2020[1,0]<stderr>:2020-06-19 09:22:56.099221: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:30] Cannot dlopen some TensorRT libraries. If you would like to use Nvidia GPU with TensorRT, please make sure the missing libraries mentioned above are installed properly.
+Fri Jun 19 09:22:56 2020[1,4]<stderr>:2020-06-19 09:22:56.461160: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libnvinfer.so.6'; dlerror: libnvinfer.so.6: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: /usr/local/lib:/usr/local/nvidia/lib:/usr/local/nvidia/lib64
+Fri Jun 19 09:22:56 2020[1,4]<stderr>:2020-06-19 09:22:56.461414: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libnvinfer_plugin.so.6'; dlerror: libnvinfer_plugin.so.6: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: /usr/local/lib:/usr/local/nvidia/lib:/usr/local/nvidia/lib64
+Fri Jun 19 09:22:56 2020[1,4]<stderr>:2020-06-19 09:22:56.461448: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:30] Cannot dlopen some TensorRT libraries. If you would like to use Nvidia GPU with TensorRT, please make sure the missing libraries mentioned above are installed properly.
+Fri Jun 19 09:22:56 2020[1,2]<stderr>:2020-06-19 09:22:56.486987: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libnvinfer.so.6'; dlerror: libnvinfer.so.6: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: /usr/local/lib:/usr/local/nvidia/lib:/usr/local/nvidia/lib64
+Fri Jun 19 09:22:56 2020[1,2]<stderr>:2020-06-19 09:22:56.487271: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libnvinfer_plugin.so.6'; dlerror: libnvinfer_plugin.so.6: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: /usr/local/lib:/usr/local/nvidia/lib:/usr/local/nvidia/lib64
+Fri Jun 19 09:22:56 2020[1,2]<stderr>:2020-06-19 09:22:56.487305: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:30] Cannot dlopen some TensorRT libraries. If you would like to use Nvidia GPU with TensorRT, please make sure the missing libraries mentioned above are installed properly.
+Fri Jun 19 09:22:56 2020[1,6]<stderr>:2020-06-19 09:22:56.637339: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libnvinfer.so.6'; dlerror: libnvinfer.so.6: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: /usr/local/lib:/usr/local/nvidia/lib:/usr/local/nvidia/lib64
+Fri Jun 19 09:22:56 2020[1,6]<stderr>:2020-06-19 09:22:56.637506: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libnvinfer_plugin.so.6'; dlerror: libnvinfer_plugin.so.6: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: /usr/local/lib:/usr/local/nvidia/lib:/usr/local/nvidia/lib64
+Fri Jun 19 09:22:56 2020[1,6]<stderr>:2020-06-19 09:22:56.637523: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:30] Cannot dlopen some TensorRT libraries. If you would like to use Nvidia GPU with TensorRT, please make sure the missing libraries mentioned above are installed properly.
+Fri Jun 19 09:22:57 2020[1,3]<stderr>:2020-06-19 09:22:57.835225: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcuda.so.1
+Fri Jun 19 09:22:57 2020[1,7]<stderr>:2020-06-19 09:22:57.835225: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcuda.so.1
+Fri Jun 19 09:22:57 2020[1,1]<stderr>:2020-06-19 09:22:57.835456: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcuda.so.1
+Fri Jun 19 09:22:57 2020[1,5]<stderr>:2020-06-19 09:22:57.835456: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcuda.so.1
+Fri Jun 19 09:22:57 2020[1,4]<stderr>:2020-06-19 09:22:57.835706: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcuda.so.1
+Fri Jun 19 09:22:57 2020[1,0]<stderr>:2020-06-19 09:22:57.836084: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcuda.so.1
+Fri Jun 19 09:22:57 2020[1,2]<stderr>:2020-06-19 09:22:57.835858: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcuda.so.1
+Fri Jun 19 09:22:57 2020[1,6]<stderr>:2020-06-19 09:22:57.836530: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcuda.so.1
+Fri Jun 19 09:22:57 2020[1,3]<stderr>:2020-06-19 09:22:57.914101: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1555] Found device 0 with properties: 
+Fri Jun 19 09:22:57 2020[1,3]<stderr>:pciBusID: 0000:04:00.0 name: Tesla P100-PCIE-12GB computeCapability: 6.0
+Fri Jun 19 09:22:57 2020[1,3]<stderr>:coreClock: 1.3285GHz coreCount: 56 deviceMemorySize: 11.91GiB deviceMemoryBandwidth: 511.41GiB/s
+Fri Jun 19 09:22:57 2020[1,3]<stderr>:2020-06-19 09:22:57.914173: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudart.so.10.1
+Fri Jun 19 09:22:57 2020[1,3]<stderr>:2020-06-19 09:22:57.916933: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcublas.so.10
+Fri Jun 19 09:22:57 2020[1,3]<stderr>:2020-06-19 09:22:57.919405: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcufft.so.10
+Fri Jun 19 09:22:57 2020[1,3]<stderr>:2020-06-19 09:22:57.919837: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcurand.so.10
+Fri Jun 19 09:22:57 2020[1,3]<stderr>:2020-06-19 09:22:57.922542: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcusolver.so.10
+Fri Jun 19 09:22:57 2020[1,3]<stderr>:2020-06-19 09:22:57.923937: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcusparse.so.10
+Fri Jun 19 09:22:57 2020[1,3]<stderr>:2020-06-19 09:22:57.929236: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudnn.so.7
+Fri Jun 19 09:22:57 2020[1,7]<stderr>:2020-06-19 09:22:57.939206: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1555] Found device 0 with properties: 
+Fri Jun 19 09:22:57 2020[1,7]<stderr>:pciBusID: 0000:05:00.0 name: Tesla P100-PCIE-12GB computeCapability: 6.0
+Fri Jun 19 09:22:57 2020[1,7]<stderr>:coreClock: 1.3285GHz coreCount: 56 deviceMemorySize: 11.91GiB deviceMemoryBandwidth: 511.41GiB/s
+Fri Jun 19 09:22:57 2020[1,7]<stderr>:2020-06-19 09:22:57.939289: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudart.so.10.1
+Fri Jun 19 09:22:57 2020[1,7]<stderr>:2020-06-19 09:22:57.941881: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcublas.so.10
+Fri Jun 19 09:22:57 2020[1,7]<stderr>:2020-06-19 09:22:57.944378: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcufft.so.10
+Fri Jun 19 09:22:57 2020[1,7]<stderr>:2020-06-19 09:22:57.944817: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcurand.so.10
+Fri Jun 19 09:22:57 2020[1,3]<stderr>:2020-06-19 09:22:57.946838: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1697] Adding visible gpu devices: 0
+Fri Jun 19 09:22:57 2020[1,7]<stderr>:2020-06-19 09:22:57.947469: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcusolver.so.10
+Fri Jun 19 09:22:57 2020[1,7]<stderr>:2020-06-19 09:22:57.948875: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcusparse.so.10
+Fri Jun 19 09:22:57 2020[1,7]<stderr>:2020-06-19 09:22:57.954160: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudnn.so.7
+Fri Jun 19 09:22:57 2020[1,3]<stderr>:2020-06-19 09:22:57.964121: I tensorflow/core/platform/cpu_feature_guard.cc:142] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
+Fri Jun 19 09:22:57 2020[1,4]<stderr>:2020-06-19 09:22:57.968945: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1555] Found device 0 with properties: 
+Fri Jun 19 09:22:57 2020[1,4]<stderr>:pciBusID: 0000:85:00.0 name: Tesla P100-PCIE-12GB computeCapability: 6.0
+Fri Jun 19 09:22:57 2020[1,4]<stderr>:coreClock: 1.3285GHz coreCount: 56 deviceMemorySize: 11.91GiB deviceMemoryBandwidth: 511.41GiB/s
+Fri Jun 19 09:22:57 2020[1,4]<stderr>:2020-06-19 09:22:57.969078: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudart.so.10.1
+Fri Jun 19 09:22:57 2020[1,1]<stderr>:2020-06-19 09:22:57.970567: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1555] Found device 0 with properties: 
+Fri Jun 19 09:22:57 2020[1,1]<stderr>:pciBusID: 0000:85:00.0 name: Tesla P100-PCIE-12GB computeCapability: 6.0
+Fri Jun 19 09:22:57 2020[1,1]<stderr>:coreClock: 1.3285GHz coreCount: 56 deviceMemorySize: 11.91GiB deviceMemoryBandwidth: 511.41GiB/s
+Fri Jun 19 09:22:57 2020[1,1]<stderr>:2020-06-19 09:22:57.970662: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudart.so.10.1
+Fri Jun 19 09:22:57 2020[1,1]<stderr>:2020-06-19 09:22:57.973070: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcublas.so.10
+Fri Jun 19 09:22:57 2020[1,4]<stderr>:2020-06-19 09:22:57.974009: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcublas.so.10
+Fri Jun 19 09:22:57 2020[1,1]<stderr>:2020-06-19 09:22:57.975479: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcufft.so.10
+Fri Jun 19 09:22:57 2020[1,1]<stderr>:2020-06-19 09:22:57.975876: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcurand.so.10
+Fri Jun 19 09:22:57 2020[1,7]<stderr>:2020-06-19 09:22:57.976161: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1697] Adding visible gpu devices: 0
+Fri Jun 19 09:22:57 2020[1,3]<stderr>:2020-06-19 09:22:57.977546: I tensorflow/core/platform/profile_utils/cpu_utils.cc:94] CPU Frequency: 2100065000 Hz
+Fri Jun 19 09:22:57 2020[1,1]<stderr>:2020-06-19 09:22:57.978479: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcusolver.so.10
+Fri Jun 19 09:22:57 2020[1,4]<stderr>:2020-06-19 09:22:57.979015: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcufft.so.10
+Fri Jun 19 09:22:57 2020[1,1]<stderr>:2020-06-19 09:22:57.979847: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcusparse.so.10
+Fri Jun 19 09:22:57 2020[1,4]<stderr>:2020-06-19 09:22:57.979816: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcurand.so.10
+Fri Jun 19 09:22:57 2020[1,5]<stderr>:2020-06-19 09:22:57.980394: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1555] Found device 0 with properties: 
+Fri Jun 19 09:22:57 2020[1,5]<stderr>:pciBusID: 0000:86:00.0 name: Tesla P100-PCIE-12GB computeCapability: 6.0
+Fri Jun 19 09:22:57 2020[1,5]<stderr>:coreClock: 1.3285GHz coreCount: 56 deviceMemorySize: 11.91GiB deviceMemoryBandwidth: 511.41GiB/s
+Fri Jun 19 09:22:57 2020[1,5]<stderr>:2020-06-19 09:22:57.980446: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudart.so.10.1
+Fri Jun 19 09:22:57 2020[1,5]<stderr>:2020-06-19 09:22:57.982744: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcublas.so.10
+Fri Jun 19 09:22:57 2020[1,1]<stderr>:2020-06-19 09:22:57.984954: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudnn.so.7
+Fri Jun 19 09:22:57 2020[1,5]<stderr>:2020-06-19 09:22:57.985129: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcufft.so.10
+Fri Jun 19 09:22:57 2020[1,3]<stderr>:2020-06-19 09:22:57.985434: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x40cbdb0 initialized for platform Host (this does not guarantee that XLA will be used). Devices:
+Fri Jun 19 09:22:57 2020[1,3]<stderr>:2020-06-19 09:22:57.985464: I tensorflow/compiler/xla/service/service.cc:176]   StreamExecutor device (0): Host, Default Version
+Fri Jun 19 09:22:57 2020[1,5]<stderr>:2020-06-19 09:22:57.985511: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcurand.so.10
+Fri Jun 19 09:22:57 2020[1,4]<stderr>:2020-06-19 09:22:57.985228: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcusolver.so.10
+Fri Jun 19 09:22:57 2020[1,5]<stderr>:2020-06-19 09:22:57.988058: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcusolver.so.10
+Fri Jun 19 09:22:57 2020[1,4]<stderr>:2020-06-19 09:22:57.988025: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcusparse.so.10
+Fri Jun 19 09:22:57 2020[1,1]<stderr>:2020-06-19 09:22:57.989486: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1697] Adding visible gpu devices: 0
+Fri Jun 19 09:22:57 2020[1,5]<stderr>:2020-06-19 09:22:57.989419: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcusparse.so.10
+Fri Jun 19 09:22:57 2020[1,7]<stderr>:2020-06-19 09:22:57.993337: I tensorflow/core/platform/cpu_feature_guard.cc:142] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
+Fri Jun 19 09:22:57 2020[1,5]<stderr>:2020-06-19 09:22:57.994567: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudnn.so.7
+Fri Jun 19 09:22:57 2020[1,4]<stderr>:2020-06-19 09:22:57.998772: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudnn.so.7
+Fri Jun 19 09:22:58 2020[1,1]<stderr>:2020-06-19 09:22:58.012097: I tensorflow/core/platform/cpu_feature_guard.cc:142] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
+Fri Jun 19 09:22:58 2020[1,7]<stderr>:2020-06-19 09:22:58.012117: I tensorflow/core/platform/profile_utils/cpu_utils.cc:94] CPU Frequency: 2100065000 Hz
+Fri Jun 19 09:22:58 2020[1,2]<stderr>:2020-06-19 09:22:58.019381: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1555] Found device 0 with properties: 
+Fri Jun 19 09:22:58 2020[1,2]<stderr>:pciBusID: 0000:04:00.0 name: Tesla P100-PCIE-12GB computeCapability: 6.0
+Fri Jun 19 09:22:58 2020[1,2]<stderr>:coreClock: 1.3285GHz coreCount: 56 deviceMemorySize: 11.91GiB deviceMemoryBandwidth: 511.41GiB/s
+Fri Jun 19 09:22:58 2020[1,2]<stderr>:2020-06-19 09:22:58.019496: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudart.so.10.1
+Fri Jun 19 09:22:58 2020[1,7]<stderr>:2020-06-19 09:22:58.020071: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x54ae370 initialized for platform Host (this does not guarantee that XLA will be used). Devices:
+Fri Jun 19 09:22:58 2020[1,7]<stderr>:2020-06-19 09:22:58.020116: I tensorflow/compiler/xla/service/service.cc:176]   StreamExecutor device (0): Host, Default Version
+Fri Jun 19 09:22:58 2020[1,2]<stderr>:2020-06-19 09:22:58.024495: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcublas.so.10
+Fri Jun 19 09:22:58 2020[1,1]<stderr>:2020-06-19 09:22:58.027179: I tensorflow/core/platform/profile_utils/cpu_utils.cc:94] CPU Frequency: 2100065000 Hz
+Fri Jun 19 09:22:58 2020[1,4]<stderr>:2020-06-19 09:22:58.028952: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1697] Adding visible gpu devices: 0
+Fri Jun 19 09:22:58 2020[1,2]<stderr>:2020-06-19 09:22:58.029490: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcufft.so.10
+Fri Jun 19 09:22:58 2020[1,2]<stderr>:2020-06-19 09:22:58.031106: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcurand.so.10
+Fri Jun 19 09:22:58 2020[1,2]<stderr>:2020-06-19 09:22:58.036582: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcusolver.so.10
+Fri Jun 19 09:22:58 2020[1,1]<stderr>:2020-06-19 09:22:58.039095: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x512ba40 initialized for platform Host (this does not guarantee that XLA will be used). Devices:
+Fri Jun 19 09:22:58 2020[1,1]<stderr>:2020-06-19 09:22:58.039133: I tensorflow/compiler/xla/service/service.cc:176]   StreamExecutor device (0): Host, Default Version
+Fri Jun 19 09:22:58 2020[1,2]<stderr>:2020-06-19 09:22:58.039503: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcusparse.so.10
+Fri Jun 19 09:22:58 2020[1,5]<stderr>:2020-06-19 09:22:58.041071: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1697] Adding visible gpu devices: 0
+Fri Jun 19 09:22:58 2020[1,2]<stderr>:2020-06-19 09:22:58.050488: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudnn.so.7
+Fri Jun 19 09:22:58 2020[1,0]<stderr>:2020-06-19 09:22:58.060888: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1555] Found device 0 with properties: 
+Fri Jun 19 09:22:58 2020[1,0]<stderr>:pciBusID: 0000:05:00.0 name: Tesla P100-PCIE-12GB computeCapability: 6.0
+Fri Jun 19 09:22:58 2020[1,0]<stderr>:coreClock: 1.3285GHz coreCount: 56 deviceMemorySize: 11.91GiB deviceMemoryBandwidth: 511.41GiB/s
+Fri Jun 19 09:22:58 2020[1,0]<stderr>:2020-06-19 09:22:58.061013: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudart.so.10.1
+Fri Jun 19 09:22:58 2020[1,0]<stderr>:2020-06-19 09:22:58.064313: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcublas.so.10
+Fri Jun 19 09:22:58 2020[1,4]<stderr>:2020-06-19 09:22:58.064051: I tensorflow/core/platform/cpu_feature_guard.cc:142] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
+Fri Jun 19 09:22:58 2020[1,0]<stderr>:2020-06-19 09:22:58.067635: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcufft.so.10
+Fri Jun 19 09:22:58 2020[1,0]<stderr>:2020-06-19 09:22:58.068160: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcurand.so.10
+Fri Jun 19 09:22:58 2020[1,0]<stderr>:2020-06-19 09:22:58.071507: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcusolver.so.10
+Fri Jun 19 09:22:58 2020[1,0]<stderr>:2020-06-19 09:22:58.073252: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcusparse.so.10
+Fri Jun 19 09:22:58 2020[1,5]<stderr>:2020-06-19 09:22:58.076573: I tensorflow/core/platform/cpu_feature_guard.cc:142] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
+Fri Jun 19 09:22:58 2020[1,2]<stderr>:2020-06-19 09:22:58.076527: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1697] Adding visible gpu devices: 0
+Fri Jun 19 09:22:58 2020[1,0]<stderr>:2020-06-19 09:22:58.079944: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudnn.so.7
+Fri Jun 19 09:22:58 2020[1,6]<stderr>:2020-06-19 09:22:58.082732: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1555] Found device 0 with properties: 
+Fri Jun 19 09:22:58 2020[1,6]<stderr>:pciBusID: 0000:86:00.0 name: Tesla P100-PCIE-12GB computeCapability: 6.0
+Fri Jun 19 09:22:58 2020[1,6]<stderr>:coreClock: 1.3285GHz coreCount: 56 deviceMemorySize: 11.91GiB deviceMemoryBandwidth: 511.41GiB/s
+Fri Jun 19 09:22:58 2020[1,6]<stderr>:2020-06-19 09:22:58.082835: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudart.so.10.1
+Fri Jun 19 09:22:58 2020[1,6]<stderr>:2020-06-19 09:22:58.087526: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcublas.so.10
+Fri Jun 19 09:22:58 2020[1,0]<stderr>:2020-06-19 09:22:58.087729: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1697] Adding visible gpu devices: 0
+Fri Jun 19 09:22:58 2020[1,6]<stderr>:2020-06-19 09:22:58.092194: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcufft.so.10
+Fri Jun 19 09:22:58 2020[1,6]<stderr>:2020-06-19 09:22:58.092965: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcurand.so.10
+Fri Jun 19 09:22:58 2020[1,5]<stderr>:2020-06-19 09:22:58.098044: I tensorflow/core/platform/profile_utils/cpu_utils.cc:94] CPU Frequency: 2100065000 Hz
+Fri Jun 19 09:22:58 2020[1,6]<stderr>:2020-06-19 09:22:58.099405: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcusolver.so.10
+Fri Jun 19 09:22:58 2020[1,4]<stderr>:2020-06-19 09:22:58.100590: I tensorflow/core/platform/profile_utils/cpu_utils.cc:94] CPU Frequency: 2099985000 Hz
+Fri Jun 19 09:22:58 2020[1,6]<stderr>:2020-06-19 09:22:58.102138: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcusparse.so.10
+Fri Jun 19 09:22:58 2020[1,5]<stderr>:2020-06-19 09:22:58.109628: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x392a620 initialized for platform Host (this does not guarantee that XLA will be used). Devices:
+Fri Jun 19 09:22:58 2020[1,5]<stderr>:2020-06-19 09:22:58.109685: I tensorflow/compiler/xla/service/service.cc:176]   StreamExecutor device (0): Host, Default Version
+Fri Jun 19 09:22:58 2020[1,6]<stderr>:2020-06-19 09:22:58.112566: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudnn.so.7
+Fri Jun 19 09:22:58 2020[1,4]<stderr>:2020-06-19 09:22:58.116046: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x4c5c790 initialized for platform Host (this does not guarantee that XLA will be used). Devices:
+Fri Jun 19 09:22:58 2020[1,4]<stderr>:2020-06-19 09:22:58.116098: I tensorflow/compiler/xla/service/service.cc:176]   StreamExecutor device (0): Host, Default Version
+Fri Jun 19 09:22:58 2020[1,2]<stderr>:2020-06-19 09:22:58.118083: I tensorflow/core/platform/cpu_feature_guard.cc:142] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
+Fri Jun 19 09:22:58 2020[1,6]<stderr>:2020-06-19 09:22:58.118435: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1697] Adding visible gpu devices: 0
+Fri Jun 19 09:22:58 2020[1,0]<stderr>:2020-06-19 09:22:58.123502: I tensorflow/core/platform/cpu_feature_guard.cc:142] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
+Fri Jun 19 09:22:58 2020[1,0]<stderr>:2020-06-19 09:22:58.151568: I tensorflow/core/platform/profile_utils/cpu_utils.cc:94] CPU Frequency: 2099985000 Hz
+Fri Jun 19 09:22:58 2020[1,6]<stderr>:2020-06-19 09:22:58.161550: I tensorflow/core/platform/cpu_feature_guard.cc:142] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
+Fri Jun 19 09:22:58 2020[1,2]<stderr>:2020-06-19 09:22:58.164208: I tensorflow/core/platform/profile_utils/cpu_utils.cc:94] CPU Frequency: 2099985000 Hz
+Fri Jun 19 09:22:58 2020[1,0]<stderr>:2020-06-19 09:22:58.173134: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x44ebec0 initialized for platform Host (this does not guarantee that XLA will be used). Devices:
+Fri Jun 19 09:22:58 2020[1,0]<stderr>:2020-06-19 09:22:58.173196: I tensorflow/compiler/xla/service/service.cc:176]   StreamExecutor device (0): Host, Default Version
+Fri Jun 19 09:22:58 2020[1,2]<stderr>:2020-06-19 09:22:58.179210: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x350c3f0 initialized for platform Host (this does not guarantee that XLA will be used). Devices:
+Fri Jun 19 09:22:58 2020[1,2]<stderr>:2020-06-19 09:22:58.179274: I tensorflow/compiler/xla/service/service.cc:176]   StreamExecutor device (0): Host, Default Version
+Fri Jun 19 09:22:58 2020[1,6]<stderr>:2020-06-19 09:22:58.190872: I tensorflow/core/platform/profile_utils/cpu_utils.cc:94] CPU Frequency: 2099985000 Hz
+Fri Jun 19 09:22:58 2020[1,6]<stderr>:2020-06-19 09:22:58.212490: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x52fe6c0 initialized for platform Host (this does not guarantee that XLA will be used). Devices:
+Fri Jun 19 09:22:58 2020[1,6]<stderr>:2020-06-19 09:22:58.212566: I tensorflow/compiler/xla/service/service.cc:176]   StreamExecutor device (0): Host, Default Version
+Fri Jun 19 09:22:58 2020[1,3]<stderr>:2020-06-19 09:22:58.372844: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x408af40 initialized for platform CUDA (this does not guarantee that XLA will be used). Devices:
+Fri Jun 19 09:22:58 2020[1,3]<stderr>:2020-06-19 09:22:58.372884: I tensorflow/compiler/xla/service/service.cc:176]   StreamExecutor device (0): Tesla P100-PCIE-12GB, Compute Capability 6.0
+Fri Jun 19 09:22:58 2020[1,3]<stderr>:2020-06-19 09:22:58.375879: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1555] Found device 0 with properties: 
+Fri Jun 19 09:22:58 2020[1,3]<stderr>:pciBusID: 0000:04:00.0 name: Tesla P100-PCIE-12GB computeCapability: 6.0
+Fri Jun 19 09:22:58 2020[1,3]<stderr>:coreClock: 1.3285GHz coreCount: 56 deviceMemorySize: 11.91GiB deviceMemoryBandwidth: 511.41GiB/s
+Fri Jun 19 09:22:58 2020[1,3]<stderr>:2020-06-19 09:22:58.375961: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudart.so.10.1
+Fri Jun 19 09:22:58 2020[1,3]<stderr>:2020-06-19 09:22:58.376010: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcublas.so.10
+Fri Jun 19 09:22:58 2020[1,3]<stderr>:2020-06-19 09:22:58.376032: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcufft.so.10
+Fri Jun 19 09:22:58 2020[1,3]<stderr>:2020-06-19 09:22:58.376051: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcurand.so.10
+Fri Jun 19 09:22:58 2020[1,3]<stderr>:2020-06-19 09:22:58.376070: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcusolver.so.10
+Fri Jun 19 09:22:58 2020[1,3]<stderr>:2020-06-19 09:22:58.376090: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcusparse.so.10
+Fri Jun 19 09:22:58 2020[1,3]<stderr>:2020-06-19 09:22:58.376107: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudnn.so.7
+Fri Jun 19 09:22:58 2020[1,3]<stderr>:2020-06-19 09:22:58.379798: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1697] Adding visible gpu devices: 0
+Fri Jun 19 09:22:58 2020[1,3]<stderr>:2020-06-19 09:22:58.379872: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudart.so.10.1
+Fri Jun 19 09:22:58 2020[1,7]<stderr>:2020-06-19 09:22:58.388319: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x54eff30 initialized for platform CUDA (this does not guarantee that XLA will be used). Devices:
+Fri Jun 19 09:22:58 2020[1,7]<stderr>:2020-06-19 09:22:58.388353: I tensorflow/compiler/xla/service/service.cc:176]   StreamExecutor device (0): Tesla P100-PCIE-12GB, Compute Capability 6.0
+Fri Jun 19 09:22:58 2020[1,7]<stderr>:2020-06-19 09:22:58.390703: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1555] Found device 0 with properties: 
+Fri Jun 19 09:22:58 2020[1,7]<stderr>:pciBusID: 0000:05:00.0 name: Tesla P100-PCIE-12GB computeCapability: 6.0
+Fri Jun 19 09:22:58 2020[1,7]<stderr>:coreClock: 1.3285GHz coreCount: 56 deviceMemorySize: 11.91GiB deviceMemoryBandwidth: 511.41GiB/s
+Fri Jun 19 09:22:58 2020[1,7]<stderr>:2020-06-19 09:22:58.390772: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudart.so.10.1
+Fri Jun 19 09:22:58 2020[1,7]<stderr>:2020-06-19 09:22:58.390819: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcublas.so.10
+Fri Jun 19 09:22:58 2020[1,7]<stderr>:2020-06-19 09:22:58.390839: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcufft.so.10
+Fri Jun 19 09:22:58 2020[1,7]<stderr>:2020-06-19 09:22:58.390856: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcurand.so.10
+Fri Jun 19 09:22:58 2020[1,7]<stderr>:2020-06-19 09:22:58.390871: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcusolver.so.10
+Fri Jun 19 09:22:58 2020[1,7]<stderr>:2020-06-19 09:22:58.390888: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcusparse.so.10
+Fri Jun 19 09:22:58 2020[1,7]<stderr>:2020-06-19 09:22:58.390905: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudnn.so.7
+Fri Jun 19 09:22:58 2020[1,7]<stderr>:2020-06-19 09:22:58.397644: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1697] Adding visible gpu devices: 0
+Fri Jun 19 09:22:58 2020[1,1]<stderr>:2020-06-19 09:22:58.397829: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x512fd90 initialized for platform CUDA (this does not guarantee that XLA will be used). Devices:
+Fri Jun 19 09:22:58 2020[1,1]<stderr>:2020-06-19 09:22:58.397860: I tensorflow/compiler/xla/service/service.cc:176]   StreamExecutor device (0): Tesla P100-PCIE-12GB, Compute Capability 6.0
+Fri Jun 19 09:22:58 2020[1,7]<stderr>:2020-06-19 09:22:58.397692: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudart.so.10.1
+Fri Jun 19 09:22:58 2020[1,1]<stderr>:2020-06-19 09:22:58.402317: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1555] Found device 0 with properties: 
+Fri Jun 19 09:22:58 2020[1,1]<stderr>:pciBusID: 0000:85:00.0 name: Tesla P100-PCIE-12GB computeCapability: 6.0
+Fri Jun 19 09:22:58 2020[1,1]<stderr>:coreClock: 1.3285GHz coreCount: 56 deviceMemorySize: 11.91GiB deviceMemoryBandwidth: 511.41GiB/s
+Fri Jun 19 09:22:58 2020[1,1]<stderr>:2020-06-19 09:22:58.402367: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudart.so.10.1
+Fri Jun 19 09:22:58 2020[1,1]<stderr>:2020-06-19 09:22:58.402401: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcublas.so.10
+Fri Jun 19 09:22:58 2020[1,1]<stderr>:2020-06-19 09:22:58.402420: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcufft.so.10
+Fri Jun 19 09:22:58 2020[1,1]<stderr>:2020-06-19 09:22:58.402438: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcurand.so.10
+Fri Jun 19 09:22:58 2020[1,1]<stderr>:2020-06-19 09:22:58.402453: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcusolver.so.10
+Fri Jun 19 09:22:58 2020[1,1]<stderr>:2020-06-19 09:22:58.402470: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcusparse.so.10
+Fri Jun 19 09:22:58 2020[1,1]<stderr>:2020-06-19 09:22:58.402488: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudnn.so.7
+Fri Jun 19 09:22:58 2020[1,1]<stderr>:2020-06-19 09:22:58.409104: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1697] Adding visible gpu devices: 0
+Fri Jun 19 09:22:58 2020[1,5]<stderr>:2020-06-19 09:22:58.405385: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x38be020 initialized for platform CUDA (this does not guarantee that XLA will be used). Devices:
+Fri Jun 19 09:22:58 2020[1,5]<stderr>:2020-06-19 09:22:58.405415: I tensorflow/compiler/xla/service/service.cc:176]   StreamExecutor device (0): Tesla P100-PCIE-12GB, Compute Capability 6.0
+Fri Jun 19 09:22:58 2020[1,1]<stderr>:2020-06-19 09:22:58.409159: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudart.so.10.1
+Fri Jun 19 09:22:58 2020[1,5]<stderr>:2020-06-19 09:22:58.409023: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1555] Found device 0 with properties: 
+Fri Jun 19 09:22:58 2020[1,5]<stderr>:pciBusID: 0000:86:00.0 name: Tesla P100-PCIE-12GB computeCapability: 6.0
+Fri Jun 19 09:22:58 2020[1,5]<stderr>:coreClock: 1.3285GHz coreCount: 56 deviceMemorySize: 11.91GiB deviceMemoryBandwidth: 511.41GiB/s
+Fri Jun 19 09:22:58 2020[1,5]<stderr>:2020-06-19 09:22:58.409079: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudart.so.10.1
+Fri Jun 19 09:22:58 2020[1,5]<stderr>:2020-06-19 09:22:58.409119: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcublas.so.10
+Fri Jun 19 09:22:58 2020[1,5]<stderr>:2020-06-19 09:22:58.409145: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcufft.so.10
+Fri Jun 19 09:22:58 2020[1,5]<stderr>:2020-06-19 09:22:58.409162: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcurand.so.10
+Fri Jun 19 09:22:58 2020[1,5]<stderr>:2020-06-19 09:22:58.409178: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcusolver.so.10
+Fri Jun 19 09:22:58 2020[1,5]<stderr>:2020-06-19 09:22:58.409194: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcusparse.so.10
+Fri Jun 19 09:22:58 2020[1,5]<stderr>:2020-06-19 09:22:58.409211: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudnn.so.7
+Fri Jun 19 09:22:58 2020[1,5]<stderr>:2020-06-19 09:22:58.414474: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1697] Adding visible gpu devices: 0
+Fri Jun 19 09:22:58 2020[1,5]<stderr>:2020-06-19 09:22:58.414574: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudart.so.10.1
+Fri Jun 19 09:22:58 2020[1,3]<stderr>:2020-06-19 09:22:58.455275: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1096] Device interconnect StreamExecutor with strength 1 edge matrix:
+Fri Jun 19 09:22:58 2020[1,3]<stderr>:2020-06-19 09:22:58.455314: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1102]      0 
+Fri Jun 19 09:22:58 2020[1,3]<stderr>:2020-06-19 09:22:58.455325: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1115] 0:   N 
+Fri Jun 19 09:22:58 2020[1,3]<stderr>:2020-06-19 09:22:58.459710: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1241] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 11329 MB memory) -> physical GPU (device: 0, name: Tesla P100-PCIE-12GB, pci bus id: 0000:04:00.0, compute capability: 6.0)
+Fri Jun 19 09:22:58 2020[1,7]<stderr>:2020-06-19 09:22:58.477292: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1096] Device interconnect StreamExecutor with strength 1 edge matrix:
+Fri Jun 19 09:22:58 2020[1,7]<stderr>:2020-06-19 09:22:58.477339: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1102]      0 
+Fri Jun 19 09:22:58 2020[1,7]<stderr>:2020-06-19 09:22:58.477350: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1115] 0:   N 
+Fri Jun 19 09:22:58 2020[1,7]<stderr>:2020-06-19 09:22:58.481268: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1241] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 11329 MB memory) -> physical GPU (device: 0, name: Tesla P100-PCIE-12GB, pci bus id: 0000:05:00.0, compute capability: 6.0)
+Fri Jun 19 09:22:58 2020[1,1]<stderr>:2020-06-19 09:22:58.489046: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1096] Device interconnect StreamExecutor with strength 1 edge matrix:
+Fri Jun 19 09:22:58 2020[1,1]<stderr>:2020-06-19 09:22:58.489090: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1102]      0 
+Fri Jun 19 09:22:58 2020[1,1]<stderr>:2020-06-19 09:22:58.489100: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1115] 0:   N 
+Fri Jun 19 09:22:58 2020[1,5]<stderr>:2020-06-19 09:22:58.490691: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1096] Device interconnect StreamExecutor with strength 1 edge matrix:
+Fri Jun 19 09:22:58 2020[1,5]<stderr>:2020-06-19 09:22:58.490733: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1102]      0 
+Fri Jun 19 09:22:58 2020[1,5]<stderr>:2020-06-19 09:22:58.490744: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1115] 0:   N 
+Fri Jun 19 09:22:58 2020[1,1]<stderr>:2020-06-19 09:22:58.498304: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1241] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 11329 MB memory) -> physical GPU (device: 0, name: Tesla P100-PCIE-12GB, pci bus id: 0000:85:00.0, compute capability: 6.0)
+Fri Jun 19 09:22:58 2020[1,5]<stderr>:2020-06-19 09:22:58.500010: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1241] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 11329 MB memory) -> physical GPU (device: 0, name: Tesla P100-PCIE-12GB, pci bus id: 0000:86:00.0, compute capability: 6.0)
+Fri Jun 19 09:22:58 2020[1,4]<stderr>:2020-06-19 09:22:58.774828: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x527d850 initialized for platform CUDA (this does not guarantee that XLA will be used). Devices:
+Fri Jun 19 09:22:58 2020[1,4]<stderr>:2020-06-19 09:22:58.774889: I tensorflow/compiler/xla/service/service.cc:176]   StreamExecutor device (0): Tesla P100-PCIE-12GB, Compute Capability 6.0
+Fri Jun 19 09:22:58 2020[1,4]<stderr>:2020-06-19 09:22:58.778232: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1555] Found device 0 with properties: 
+Fri Jun 19 09:22:58 2020[1,4]<stderr>:pciBusID: 0000:85:00.0 name: Tesla P100-PCIE-12GB computeCapability: 6.0
+Fri Jun 19 09:22:58 2020[1,4]<stderr>:coreClock: 1.3285GHz coreCount: 56 deviceMemorySize: 11.91GiB deviceMemoryBandwidth: 511.41GiB/s
+Fri Jun 19 09:22:58 2020[1,4]<stderr>:2020-06-19 09:22:58.778327: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudart.so.10.1
+Fri Jun 19 09:22:58 2020[1,4]<stderr>:2020-06-19 09:22:58.778392: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcublas.so.10
+Fri Jun 19 09:22:58 2020[1,4]<stderr>:2020-06-19 09:22:58.778430: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcufft.so.10
+Fri Jun 19 09:22:58 2020[1,4]<stderr>:2020-06-19 09:22:58.778466: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcurand.so.10
+Fri Jun 19 09:22:58 2020[1,4]<stderr>:2020-06-19 09:22:58.778501: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcusolver.so.10
+Fri Jun 19 09:22:58 2020[1,4]<stderr>:2020-06-19 09:22:58.778530: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcusparse.so.10
+Fri Jun 19 09:22:58 2020[1,4]<stderr>:2020-06-19 09:22:58.778559: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudnn.so.7
+Fri Jun 19 09:22:58 2020[1,4]<stderr>:2020-06-19 09:22:58.784213: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1697] Adding visible gpu devices: 0
+Fri Jun 19 09:22:58 2020[1,4]<stderr>:2020-06-19 09:22:58.784283: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudart.so.10.1
+Fri Jun 19 09:22:58 2020[1,0]<stderr>:2020-06-19 09:22:58.802104: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x4506140 initialized for platform CUDA (this does not guarantee that XLA will be used). Devices:
+Fri Jun 19 09:22:58 2020[1,0]<stderr>:2020-06-19 09:22:58.802158: I tensorflow/compiler/xla/service/service.cc:176]   StreamExecutor device (0): Tesla P100-PCIE-12GB, Compute Capability 6.0
+Fri Jun 19 09:22:58 2020[1,6]<stderr>:2020-06-19 09:22:58.810025: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x53281a0 initialized for platform CUDA (this does not guarantee that XLA will be used). Devices:
+Fri Jun 19 09:22:58 2020[1,6]<stderr>:2020-06-19 09:22:58.810079: I tensorflow/compiler/xla/service/service.cc:176]   StreamExecutor device (0): Tesla P100-PCIE-12GB, Compute Capability 6.0
+Fri Jun 19 09:22:58 2020[1,0]<stderr>:2020-06-19 09:22:58.811053: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1555] Found device 0 with properties: 
+Fri Jun 19 09:22:58 2020[1,0]<stderr>:pciBusID: 0000:05:00.0 name: Tesla P100-PCIE-12GB computeCapability: 6.0
+Fri Jun 19 09:22:58 2020[1,0]<stderr>:coreClock: 1.3285GHz coreCount: 56 deviceMemorySize: 11.91GiB deviceMemoryBandwidth: 511.41GiB/s
+Fri Jun 19 09:22:58 2020[1,0]<stderr>:2020-06-19 09:22:58.811141: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudart.so.10.1
+Fri Jun 19 09:22:58 2020[1,2]<stderr>:2020-06-19 09:22:58.810785: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x3501480 initialized for platform CUDA (this does not guarantee that XLA will be used). Devices:
+Fri Jun 19 09:22:58 2020[1,2]<stderr>:2020-06-19 09:22:58.810836: I tensorflow/compiler/xla/service/service.cc:176]   StreamExecutor device (0): Tesla P100-PCIE-12GB, Compute Capability 6.0
+Fri Jun 19 09:22:58 2020[1,0]<stderr>:2020-06-19 09:22:58.811197: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcublas.so.10
+Fri Jun 19 09:22:58 2020[1,0]<stderr>:2020-06-19 09:22:58.811229: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcufft.so.10
+Fri Jun 19 09:22:58 2020[1,0]<stderr>:2020-06-19 09:22:58.811258: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcurand.so.10
+Fri Jun 19 09:22:58 2020[1,0]<stderr>:2020-06-19 09:22:58.811286: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcusolver.so.10
+Fri Jun 19 09:22:58 2020[1,0]<stderr>:2020-06-19 09:22:58.811313: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcusparse.so.10
+Fri Jun 19 09:22:58 2020[1,0]<stderr>:2020-06-19 09:22:58.811342: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudnn.so.7
+Fri Jun 19 09:22:58 2020[1,6]<stderr>:2020-06-19 09:22:58.819351: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1555] Found device 0 with properties: 
+Fri Jun 19 09:22:58 2020[1,6]<stderr>:pciBusID: 0000:86:00.0 name: Tesla P100-PCIE-12GB computeCapability: 6.0
+Fri Jun 19 09:22:58 2020[1,6]<stderr>:coreClock: 1.3285GHz coreCount: 56 deviceMemorySize: 11.91GiB deviceMemoryBandwidth: 511.41GiB/s
+Fri Jun 19 09:22:58 2020[1,6]<stderr>:2020-06-19 09:22:58.819448: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudart.so.10.1
+Fri Jun 19 09:22:58 2020[1,6]<stderr>:2020-06-19 09:22:58.819505: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcublas.so.10
+Fri Jun 19 09:22:58 2020[1,6]<stderr>:2020-06-19 09:22:58.819542: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcufft.so.10
+Fri Jun 19 09:22:58 2020[1,6]<stderr>:2020-06-19 09:22:58.819575: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcurand.so.10
+Fri Jun 19 09:22:58 2020[1,6]<stderr>:2020-06-19 09:22:58.819603: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcusolver.so.10
+Fri Jun 19 09:22:58 2020[1,6]<stderr>:2020-06-19 09:22:58.819636: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcusparse.so.10
+Fri Jun 19 09:22:58 2020[1,6]<stderr>:2020-06-19 09:22:58.819671: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudnn.so.7
+Fri Jun 19 09:22:58 2020[1,2]<stderr>:2020-06-19 09:22:58.820052: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1555] Found device 0 with properties: 
+Fri Jun 19 09:22:58 2020[1,2]<stderr>:pciBusID: 0000:04:00.0 name: Tesla P100-PCIE-12GB computeCapability: 6.0
+Fri Jun 19 09:22:58 2020[1,2]<stderr>:coreClock: 1.3285GHz coreCount: 56 deviceMemorySize: 11.91GiB deviceMemoryBandwidth: 511.41GiB/s
+Fri Jun 19 09:22:58 2020[1,2]<stderr>:2020-06-19 09:22:58.820138: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudart.so.10.1
+Fri Jun 19 09:22:58 2020[1,2]<stderr>:2020-06-19 09:22:58.820198: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcublas.so.10
+Fri Jun 19 09:22:58 2020[1,2]<stderr>:2020-06-19 09:22:58.820234: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcufft.so.10
+Fri Jun 19 09:22:58 2020[1,2]<stderr>:2020-06-19 09:22:58.820268: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcurand.so.10
+Fri Jun 19 09:22:58 2020[1,2]<stderr>:2020-06-19 09:22:58.820303: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcusolver.so.10
+Fri Jun 19 09:22:58 2020[1,2]<stderr>:2020-06-19 09:22:58.820337: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcusparse.so.10
+Fri Jun 19 09:22:58 2020[1,2]<stderr>:2020-06-19 09:22:58.820370: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudnn.so.7
+Fri Jun 19 09:22:58 2020[1,0]<stderr>:2020-06-19 09:22:58.829482: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1697] Adding visible gpu devices: 0
+Fri Jun 19 09:22:58 2020[1,0]<stderr>:2020-06-19 09:22:58.829606: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudart.so.10.1
+Fri Jun 19 09:22:58 2020[1,6]<stderr>:2020-06-19 09:22:58.836397: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1697] Adding visible gpu devices: 0
+Fri Jun 19 09:22:58 2020[1,6]<stderr>:2020-06-19 09:22:58.836493: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudart.so.10.1
+Fri Jun 19 09:22:58 2020[1,2]<stderr>:2020-06-19 09:22:58.837205: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1697] Adding visible gpu devices: 0
+Fri Jun 19 09:22:58 2020[1,2]<stderr>:2020-06-19 09:22:58.837305: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudart.so.10.1
+Fri Jun 19 09:22:58 2020[1,4]<stderr>:2020-06-19 09:22:58.930761: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1096] Device interconnect StreamExecutor with strength 1 edge matrix:
+Fri Jun 19 09:22:58 2020[1,4]<stderr>:2020-06-19 09:22:58.930827: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1102]      0 
+Fri Jun 19 09:22:58 2020[1,4]<stderr>:2020-06-19 09:22:58.930849: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1115] 0:   N 
+Fri Jun 19 09:22:58 2020[1,4]<stderr>:2020-06-19 09:22:58.938184: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1241] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 11329 MB memory) -> physical GPU (device: 0, name: Tesla P100-PCIE-12GB, pci bus id: 0000:85:00.0, compute capability: 6.0)
+Fri Jun 19 09:22:58 2020[1,6]<stderr>:2020-06-19 09:22:58.988541: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1096] Device interconnect StreamExecutor with strength 1 edge matrix:
+Fri Jun 19 09:22:58 2020[1,6]<stderr>:2020-06-19 09:22:58.988618: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1102]      0 
+Fri Jun 19 09:22:58 2020[1,6]<stderr>:2020-06-19 09:22:58.988640: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1115] 0:   N 
+Fri Jun 19 09:22:58 2020[1,2]<stderr>:2020-06-19 09:22:58.989721: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1096] Device interconnect StreamExecutor with strength 1 edge matrix:
+Fri Jun 19 09:22:58 2020[1,2]<stderr>:2020-06-19 09:22:58.989785: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1102]      0 
+Fri Jun 19 09:22:58 2020[1,2]<stderr>:2020-06-19 09:22:58.989805: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1115] 0:   N 
+Fri Jun 19 09:22:58 2020[1,0]<stderr>:2020-06-19 09:22:58.995968: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1096] Device interconnect StreamExecutor with strength 1 edge matrix:
+Fri Jun 19 09:22:58 2020[1,0]<stderr>:2020-06-19 09:22:58.996052: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1102]      0 
+Fri Jun 19 09:22:58 2020[1,0]<stderr>:2020-06-19 09:22:58.996073: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1115] 0:   N 
+Fri Jun 19 09:22:58 2020[1,6]<stderr>:2020-06-19 09:22:58.998862: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1241] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 11329 MB memory) -> physical GPU (device: 0, name: Tesla P100-PCIE-12GB, pci bus id: 0000:86:00.0, compute capability: 6.0)
+Fri Jun 19 09:22:59 2020[1,2]<stderr>:2020-06-19 09:22:59.002233: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1241] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 11329 MB memory) -> physical GPU (device: 0, name: Tesla P100-PCIE-12GB, pci bus id: 0000:04:00.0, compute capability: 6.0)
+Fri Jun 19 09:22:59 2020[1,0]<stderr>:2020-06-19 09:22:59.007528: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1241] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 11329 MB memory) -> physical GPU (device: 0, name: Tesla P100-PCIE-12GB, pci bus id: 0000:05:00.0, compute capability: 6.0)
+Fri Jun 19 09:23:02 2020[1,0]<stdout>:Model: ResNet50
+Fri Jun 19 09:23:02 2020[1,0]<stdout>:Batch size: 32
+Fri Jun 19 09:23:02 2020[1,0]<stdout>:Number of GPUs: 8
+Fri Jun 19 09:23:02 2020[1,0]<stdout>:Running warmup...
+Fri Jun 19 09:23:11 2020[1,3]<stderr>:2020-06-19 09:23:11.490785: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcublas.so.10
+Fri Jun 19 09:23:11 2020[1,7]<stderr>:2020-06-19 09:23:11.578681: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcublas.so.10
+Fri Jun 19 09:23:11 2020[1,3]<stderr>:2020-06-19 09:23:11.771124: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudnn.so.7
+Fri Jun 19 09:23:11 2020[1,1]<stderr>:2020-06-19 09:23:11.772140: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcublas.so.10
+Fri Jun 19 09:23:11 2020[1,7]<stderr>:2020-06-19 09:23:11.869720: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudnn.so.7
+Fri Jun 19 09:23:11 2020[1,5]<stderr>:2020-06-19 09:23:11.913469: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcublas.so.10
+Fri Jun 19 09:23:12 2020[1,1]<stderr>:2020-06-19 09:23:12.068034: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudnn.so.7
+Fri Jun 19 09:23:12 2020[1,5]<stderr>:2020-06-19 09:23:12.213954: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudnn.so.7
+Fri Jun 19 09:23:13 2020[1,2]<stderr>:2020-06-19 09:23:13.062486: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcublas.so.10
+Fri Jun 19 09:23:13 2020[1,2]<stderr>:2020-06-19 09:23:13.348450: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudnn.so.7
+Fri Jun 19 09:23:13 2020[1,6]<stderr>:2020-06-19 09:23:13.574212: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcublas.so.10
+Fri Jun 19 09:23:13 2020[1,6]<stderr>:2020-06-19 09:23:13.851441: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudnn.so.7
+Fri Jun 19 09:23:13 2020[1,4]<stderr>:2020-06-19 09:23:13.981257: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcublas.so.10
+Fri Jun 19 09:23:14 2020[1,4]<stderr>:2020-06-19 09:23:14.256976: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudnn.so.7
+Fri Jun 19 09:23:16 2020[1,0]<stderr>:2020-06-19 09:23:16.956153: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcublas.so.10
+Fri Jun 19 09:23:17 2020[1,0]<stderr>:2020-06-19 09:23:17.238696: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudnn.so.7
+Fri Jun 19 09:23:18 2020[1,0]<stdout>:tf2-horovod-lsczz:30:97 [0] NCCL INFO Bootstrap : Using [0]eth0:10.233.64.153<0> [1]net1:20.56.217.12<0>
+Fri Jun 19 09:23:18 2020[1,0]<stdout>:tf2-horovod-lsczz:30:97 [0] NCCL INFO NET/Plugin : No plugin found (libnccl-net.so).
+Fri Jun 19 09:23:18 2020[1,0]<stdout>:
+Fri Jun 19 09:23:18 2020[1,0]<stdout>:tf2-horovod-lsczz:30:97 [0] misc/ibvwrap.cc:212 NCCL WARN Call to ibv_open_device failed
+Fri Jun 19 09:23:18 2020[1,0]<stdout>:
+Fri Jun 19 09:23:18 2020[1,0]<stdout>:tf2-horovod-lsczz:30:97 [0] transport/net_ib.cc:117 NCCL WARN NET/IB : Unable to open device mlx5_0
+Fri Jun 19 09:23:18 2020[1,0]<stdout>:
+Fri Jun 19 09:23:18 2020[1,0]<stdout>:tf2-horovod-lsczz:30:97 [0] misc/ibvwrap.cc:212 NCCL WARN Call to ibv_open_device failed
+Fri Jun 19 09:23:18 2020[1,0]<stdout>:
+Fri Jun 19 09:23:18 2020[1,0]<stdout>:tf2-horovod-lsczz:30:97 [0] transport/net_ib.cc:117 NCCL WARN NET/IB : Unable to open device mlx5_1
+Fri Jun 19 09:23:18 2020[1,0]<stdout>:
+Fri Jun 19 09:23:18 2020[1,0]<stdout>:tf2-horovod-lsczz:30:97 [0] misc/ibvwrap.cc:212 NCCL WARN Call to ibv_open_device failed
+Fri Jun 19 09:23:18 2020[1,0]<stdout>:
+Fri Jun 19 09:23:18 2020[1,0]<stdout>:tf2-horovod-lsczz:30:97 [0] transport/net_ib.cc:117 NCCL WARN NET/IB : Unable to open device mlx5_2
+Fri Jun 19 09:23:18 2020[1,0]<stdout>:
+Fri Jun 19 09:23:18 2020[1,0]<stdout>:tf2-horovod-lsczz:30:97 [0] misc/ibvwrap.cc:212 NCCL WARN Call to ibv_open_device failed
+Fri Jun 19 09:23:18 2020[1,0]<stdout>:
+Fri Jun 19 09:23:18 2020[1,0]<stdout>:tf2-horovod-lsczz:30:97 [0] transport/net_ib.cc:117 NCCL WARN NET/IB : Unable to open device mlx5_3
+Fri Jun 19 09:23:18 2020[1,5]<stdout>:tf2-horovod-4:218:307 [0] NCCL INFO Bootstrap : Using [0]eth0:10.233.99.10<0> [1]net1:20.56.217.12<0>
+Fri Jun 19 09:23:18 2020[1,5]<stdout>:tf2-horovod-4:218:307 [0] NCCL INFO NET/Plugin : No plugin found (libnccl-net.so).
+Fri Jun 19 09:23:18 2020[1,2]<stdout>:tf2-horovod-1:240:351 [0] NCCL INFO Bootstrap : Using [0]eth0:10.233.64.150<0> [1]net1:20.56.217.11<0>
+Fri Jun 19 09:23:18 2020[1,2]<stdout>:tf2-horovod-1:240:351 [0] NCCL INFO NET/Plugin : No plugin found (libnccl-net.so).
+Fri Jun 19 09:23:18 2020[1,6]<stdout>:tf2-horovod-5:240:351 [0] NCCL INFO Bootstrap : Using [0]eth0:10.233.64.151<0> [1]net1:20.56.217.10<0>
+Fri Jun 19 09:23:18 2020[1,6]<stdout>:tf2-horovod-5:240:351 [0] NCCL INFO NET/Plugin : No plugin found (libnccl-net.so).
+Fri Jun 19 09:23:18 2020[1,7]<stdout>:tf2-horovod-6:263:352 [0] NCCL INFO Bootstrap : Using [0]eth0:10.233.99.11<0> [1]net1:20.56.217.10<0>
+Fri Jun 19 09:23:18 2020[1,7]<stdout>:tf2-horovod-6:263:352 [0] NCCL INFO NET/Plugin : No plugin found (libnccl-net.so).
+Fri Jun 19 09:23:18 2020[1,3]<stdout>:tf2-horovod-2:240:329 [0] NCCL INFO Bootstrap : Using [0]eth0:10.233.99.1<0> [1]net1:20.56.217.11<0>
+Fri Jun 19 09:23:18 2020[1,3]<stdout>:tf2-horovod-2:240:329 [0] NCCL INFO NET/Plugin : No plugin found (libnccl-net.so).
+Fri Jun 19 09:23:18 2020[1,1]<stdout>:tf2-horovod-0:262:330 [0] NCCL INFO Bootstrap : Using [0]eth0:10.233.99.9<0> [1]net1:20.56.217.9<0>
+Fri Jun 19 09:23:18 2020[1,1]<stdout>:tf2-horovod-0:262:330 [0] NCCL INFO NET/Plugin : No plugin found (libnccl-net.so).
+Fri Jun 19 09:23:18 2020[1,0]<stdout>:
+Fri Jun 19 09:23:18 2020[1,0]<stdout>:tf2-horovod-lsczz:30:97 [0] misc/ibvwrap.cc:212 NCCL WARN Call to ibv_open_device failed
+Fri Jun 19 09:23:18 2020[1,0]<stdout>:
+Fri Jun 19 09:23:18 2020[1,0]<stdout>:tf2-horovod-lsczz:30:97 [0] transport/net_ib.cc:117 NCCL WARN NET/IB : Unable to open device mlx5_5
+Fri Jun 19 09:23:18 2020[1,0]<stdout>:
+Fri Jun 19 09:23:18 2020[1,0]<stdout>:tf2-horovod-lsczz:30:97 [0] misc/ibvwrap.cc:212 NCCL WARN Call to ibv_open_device failed
+Fri Jun 19 09:23:18 2020[1,0]<stdout>:
+Fri Jun 19 09:23:18 2020[1,0]<stdout>:tf2-horovod-lsczz:30:97 [0] transport/net_ib.cc:117 NCCL WARN NET/IB : Unable to open device mlx5_6
+Fri Jun 19 09:23:18 2020[1,0]<stdout>:
+Fri Jun 19 09:23:18 2020[1,0]<stdout>:tf2-horovod-lsczz:30:97 [0] misc/ibvwrap.cc:212 NCCL WARN Call to ibv_open_device failed
+Fri Jun 19 09:23:18 2020[1,0]<stdout>:
+Fri Jun 19 09:23:18 2020[1,0]<stdout>:tf2-horovod-lsczz:30:97 [0] transport/net_ib.cc:117 NCCL WARN NET/IB : Unable to open device mlx5_7
+Fri Jun 19 09:23:18 2020[1,0]<stdout>:
+Fri Jun 19 09:23:18 2020[1,0]<stdout>:tf2-horovod-lsczz:30:97 [0] misc/ibvwrap.cc:212 NCCL WARN Call to ibv_open_device failed
+Fri Jun 19 09:23:18 2020[1,0]<stdout>:
+Fri Jun 19 09:23:18 2020[1,0]<stdout>:tf2-horovod-lsczz:30:97 [0] transport/net_ib.cc:117 NCCL WARN NET/IB : Unable to open device mlx5_8
+Fri Jun 19 09:23:18 2020[1,0]<stdout>:
+Fri Jun 19 09:23:18 2020[1,0]<stdout>:tf2-horovod-lsczz:30:97 [0] misc/ibvwrap.cc:212 NCCL WARN Call to ibv_open_device failed
+Fri Jun 19 09:23:18 2020[1,0]<stdout>:
+Fri Jun 19 09:23:18 2020[1,0]<stdout>:tf2-horovod-lsczz:30:97 [0] transport/net_ib.cc:117 NCCL WARN NET/IB : Unable to open device mlx5_9
+Fri Jun 19 09:23:18 2020[1,0]<stdout>:tf2-horovod-lsczz:30:97 [0] NCCL INFO NET/IB : Using [0]mlx5_4:1/IB ; OOB eth0:10.233.64.153<0>
+Fri Jun 19 09:23:18 2020[1,0]<stdout>:NCCL version 2.4.8+cuda10.1
+Fri Jun 19 09:23:18 2020[1,4]<stdout>:tf2-horovod-3:262:373 [0] NCCL INFO Bootstrap : Using [0]eth0:10.233.64.152<0> [1]net1:20.56.217.9<0>
+Fri Jun 19 09:23:18 2020[1,4]<stdout>:tf2-horovod-3:262:373 [0] NCCL INFO NET/Plugin : No plugin found (libnccl-net.so).
+Fri Jun 19 09:23:18 2020[1,1]<stdout>:
+Fri Jun 19 09:23:18 2020[1,1]<stdout>:tf2-horovod-0:262:330 [0] misc/ibvwrap.cc:212 NCCL WARN Call to ibv_open_device failed
+Fri Jun 19 09:23:18 2020[1,1]<stdout>:
+Fri Jun 19 09:23:18 2020[1,1]<stdout>:tf2-horovod-0:262:330 [0] transport/net_ib.cc:117 NCCL WARN NET/IB : Unable to open device mlx5_0
+Fri Jun 19 09:23:18 2020[1,1]<stdout>:
+Fri Jun 19 09:23:18 2020[1,1]<stdout>:tf2-horovod-0:262:330 [0] misc/ibvwrap.cc:212 NCCL WARN Call to ibv_open_device failed
+Fri Jun 19 09:23:18 2020[1,1]<stdout>:
+Fri Jun 19 09:23:18 2020[1,1]<stdout>:tf2-horovod-0:262:330 [0] transport/net_ib.cc:117 NCCL WARN NET/IB : Unable to open device mlx5_1
+Fri Jun 19 09:23:18 2020[1,1]<stdout>:
+Fri Jun 19 09:23:18 2020[1,1]<stdout>:tf2-horovod-0:262:330 [0] misc/ibvwrap.cc:212 NCCL WARN Call to ibv_open_device failed
+Fri Jun 19 09:23:18 2020[1,1]<stdout>:
+Fri Jun 19 09:23:18 2020[1,1]<stdout>:tf2-horovod-0:262:330 [0] transport/net_ib.cc:117 NCCL WARN NET/IB : Unable to open device mlx5_2
+Fri Jun 19 09:23:18 2020[1,1]<stdout>:
+Fri Jun 19 09:23:18 2020[1,1]<stdout>:tf2-horovod-0:262:330 [0] misc/ibvwrap.cc:212 NCCL WARN Call to ibv_open_device failed
+Fri Jun 19 09:23:18 2020[1,1]<stdout>:
+Fri Jun 19 09:23:18 2020[1,1]<stdout>:tf2-horovod-0:262:330 [0] transport/net_ib.cc:117 NCCL WARN NET/IB : Unable to open device mlx5_3
+Fri Jun 19 09:23:18 2020[1,3]<stdout>:
+Fri Jun 19 09:23:18 2020[1,3]<stdout>:tf2-horovod-2:240:329 [0] misc/ibvwrap.cc:212 NCCL WARN Call to ibv_open_device failed
+Fri Jun 19 09:23:18 2020[1,3]<stdout>:
+Fri Jun 19 09:23:18 2020[1,3]<stdout>:tf2-horovod-2:240:329 [0] transport/net_ib.cc:117 NCCL WARN NET/IB : Unable to open device mlx5_0
+Fri Jun 19 09:23:18 2020[1,3]<stdout>:
+Fri Jun 19 09:23:18 2020[1,3]<stdout>:tf2-horovod-2:240:329 [0] misc/ibvwrap.cc:212 NCCL WARN Call to ibv_open_device failed
+Fri Jun 19 09:23:18 2020[1,3]<stdout>:
+Fri Jun 19 09:23:18 2020[1,3]<stdout>:tf2-horovod-2:240:329 [0] transport/net_ib.cc:117 NCCL WARN NET/IB : Unable to open device mlx5_1
+Fri Jun 19 09:23:18 2020[1,7]<stdout>:
+Fri Jun 19 09:23:18 2020[1,7]<stdout>:tf2-horovod-6:263:352 [0] misc/ibvwrap.cc:212 NCCL WARN Call to ibv_open_device failed
+Fri Jun 19 09:23:18 2020[1,7]<stdout>:
+Fri Jun 19 09:23:18 2020[1,7]<stdout>:tf2-horovod-6:263:352 [0] transport/net_ib.cc:117 NCCL WARN NET/IB : Unable to open device mlx5_0
+Fri Jun 19 09:23:18 2020[1,7]<stdout>:
+Fri Jun 19 09:23:18 2020[1,7]<stdout>:tf2-horovod-6:263:352 [0] misc/ibvwrap.cc:212 NCCL WARN Call to ibv_open_device failed
+Fri Jun 19 09:23:18 2020[1,7]<stdout>:
+Fri Jun 19 09:23:18 2020[1,7]<stdout>:tf2-horovod-6:263:352 [0] transport/net_ib.cc:117 NCCL WARN NET/IB : Unable to open device mlx5_1
+Fri Jun 19 09:23:18 2020[1,7]<stdout>:
+Fri Jun 19 09:23:18 2020[1,7]<stdout>:tf2-horovod-6:263:352 [0] misc/ibvwrap.cc:212 NCCL WARN Call to ibv_open_device failed
+Fri Jun 19 09:23:18 2020[1,7]<stdout>:
+Fri Jun 19 09:23:18 2020[1,7]<stdout>:tf2-horovod-6:263:352 [0] transport/net_ib.cc:117 NCCL WARN NET/IB : Unable to open device mlx5_2
+Fri Jun 19 09:23:18 2020[1,7]<stdout>:
+Fri Jun 19 09:23:18 2020[1,7]<stdout>:tf2-horovod-6:263:352 [0] misc/ibvwrap.cc:212 NCCL WARN Call to ibv_open_device failed
+Fri Jun 19 09:23:18 2020[1,7]<stdout>:
+Fri Jun 19 09:23:18 2020[1,7]<stdout>:tf2-horovod-6:263:352 [0] transport/net_ib.cc:117 NCCL WARN NET/IB : Unable to open device mlx5_3
+Fri Jun 19 09:23:18 2020[1,7]<stdout>:
+Fri Jun 19 09:23:18 2020[1,7]<stdout>:tf2-horovod-6:263:352 [0] misc/ibvwrap.cc:212 NCCL WARN Call to ibv_open_device failed
+Fri Jun 19 09:23:18 2020[1,7]<stdout>:
+Fri Jun 19 09:23:18 2020[1,7]<stdout>:tf2-horovod-6:263:352 [0] transport/net_ib.cc:117 NCCL WARN NET/IB : Unable to open device mlx5_4
+Fri Jun 19 09:23:18 2020[1,5]<stdout>:
+Fri Jun 19 09:23:18 2020[1,5]<stdout>:tf2-horovod-4:218:307 [0] misc/ibvwrap.cc:212 NCCL WARN Call to ibv_open_device failed
+Fri Jun 19 09:23:18 2020[1,5]<stdout>:
+Fri Jun 19 09:23:18 2020[1,5]<stdout>:tf2-horovod-4:218:307 [0] transport/net_ib.cc:117 NCCL WARN NET/IB : Unable to open device mlx5_0
+Fri Jun 19 09:23:18 2020[1,5]<stdout>:
+Fri Jun 19 09:23:18 2020[1,5]<stdout>:tf2-horovod-4:218:307 [0] misc/ibvwrap.cc:212 NCCL WARN Call to ibv_open_device failed
+Fri Jun 19 09:23:18 2020[1,5]<stdout>:
+Fri Jun 19 09:23:18 2020[1,5]<stdout>:tf2-horovod-4:218:307 [0] transport/net_ib.cc:117 NCCL WARN NET/IB : Unable to open device mlx5_1
+Fri Jun 19 09:23:18 2020[1,5]<stdout>:
+Fri Jun 19 09:23:18 2020[1,5]<stdout>:tf2-horovod-4:218:307 [0] misc/ibvwrap.cc:212 NCCL WARN Call to ibv_open_device failed
+Fri Jun 19 09:23:18 2020[1,5]<stdout>:
+Fri Jun 19 09:23:18 2020[1,5]<stdout>:tf2-horovod-4:218:307 [0] transport/net_ib.cc:117 NCCL WARN NET/IB : Unable to open device mlx5_2
+Fri Jun 19 09:23:18 2020[1,6]<stdout>:
+Fri Jun 19 09:23:18 2020[1,6]<stdout>:tf2-horovod-5:240:351 [0] misc/ibvwrap.cc:212 NCCL WARN Call to ibv_open_device failed
+Fri Jun 19 09:23:18 2020[1,6]<stdout>:
+Fri Jun 19 09:23:18 2020[1,6]<stdout>:tf2-horovod-5:240:351 [0] transport/net_ib.cc:117 NCCL WARN NET/IB : Unable to open device mlx5_0
+Fri Jun 19 09:23:18 2020[1,6]<stdout>:
+Fri Jun 19 09:23:18 2020[1,6]<stdout>:tf2-horovod-5:240:351 [0] misc/ibvwrap.cc:212 NCCL WARN Call to ibv_open_device failed
+Fri Jun 19 09:23:18 2020[1,6]<stdout>:
+Fri Jun 19 09:23:18 2020[1,6]<stdout>:tf2-horovod-5:240:351 [0] transport/net_ib.cc:117 NCCL WARN NET/IB : Unable to open device mlx5_1
+Fri Jun 19 09:23:18 2020[1,6]<stdout>:
+Fri Jun 19 09:23:18 2020[1,6]<stdout>:tf2-horovod-5:240:351 [0] misc/ibvwrap.cc:212 NCCL WARN Call to ibv_open_device failed
+Fri Jun 19 09:23:18 2020[1,6]<stdout>:
+Fri Jun 19 09:23:18 2020[1,6]<stdout>:tf2-horovod-5:240:351 [0] transport/net_ib.cc:117 NCCL WARN NET/IB : Unable to open device mlx5_2
+Fri Jun 19 09:23:18 2020[1,6]<stdout>:
+Fri Jun 19 09:23:18 2020[1,6]<stdout>:tf2-horovod-5:240:351 [0] misc/ibvwrap.cc:212 NCCL WARN Call to ibv_open_device failed
+Fri Jun 19 09:23:18 2020[1,6]<stdout>:
+Fri Jun 19 09:23:18 2020[1,6]<stdout>:tf2-horovod-5:240:351 [0] transport/net_ib.cc:117 NCCL WARN NET/IB : Unable to open device mlx5_3
+Fri Jun 19 09:23:18 2020[1,6]<stdout>:
+Fri Jun 19 09:23:18 2020[1,6]<stdout>:tf2-horovod-5:240:351 [0] misc/ibvwrap.cc:212 NCCL WARN Call to ibv_open_device failed
+Fri Jun 19 09:23:18 2020[1,6]<stdout>:
+Fri Jun 19 09:23:18 2020[1,6]<stdout>:tf2-horovod-5:240:351 [0] transport/net_ib.cc:117 NCCL WARN NET/IB : Unable to open device mlx5_4
+Fri Jun 19 09:23:18 2020[1,2]<stdout>:
+Fri Jun 19 09:23:18 2020[1,2]<stdout>:tf2-horovod-1:240:351 [0] misc/ibvwrap.cc:212 NCCL WARN Call to ibv_open_device failed
+Fri Jun 19 09:23:18 2020[1,2]<stdout>:
+Fri Jun 19 09:23:18 2020[1,2]<stdout>:tf2-horovod-1:240:351 [0] transport/net_ib.cc:117 NCCL WARN NET/IB : Unable to open device mlx5_0
+Fri Jun 19 09:23:18 2020[1,2]<stdout>:
+Fri Jun 19 09:23:18 2020[1,2]<stdout>:tf2-horovod-1:240:351 [0] misc/ibvwrap.cc:212 NCCL WARN Call to ibv_open_device failed
+Fri Jun 19 09:23:18 2020[1,2]<stdout>:
+Fri Jun 19 09:23:18 2020[1,2]<stdout>:tf2-horovod-1:240:351 [0] transport/net_ib.cc:117 NCCL WARN NET/IB : Unable to open device mlx5_1
+Fri Jun 19 09:23:18 2020[1,0]<stdout>:tf2-horovod-lsczz:30:97 [0] NCCL INFO Setting affinity for GPU 0 to 55555555,55555555
+Fri Jun 19 09:23:18 2020[1,4]<stdout>:
+Fri Jun 19 09:23:18 2020[1,4]<stdout>:tf2-horovod-3:262:373 [0] misc/ibvwrap.cc:212 NCCL WARN Call to ibv_open_device failed
+Fri Jun 19 09:23:18 2020[1,4]<stdout>:
+Fri Jun 19 09:23:18 2020[1,4]<stdout>:tf2-horovod-3:262:373 [0] transport/net_ib.cc:117 NCCL WARN NET/IB : Unable to open device mlx5_0
+Fri Jun 19 09:23:18 2020[1,4]<stdout>:
+Fri Jun 19 09:23:18 2020[1,4]<stdout>:tf2-horovod-3:262:373 [0] misc/ibvwrap.cc:212 NCCL WARN Call to ibv_open_device failed
+Fri Jun 19 09:23:18 2020[1,4]<stdout>:
+Fri Jun 19 09:23:18 2020[1,4]<stdout>:tf2-horovod-3:262:373 [0] transport/net_ib.cc:117 NCCL WARN NET/IB : Unable to open device mlx5_1
+Fri Jun 19 09:23:18 2020[1,4]<stdout>:
+Fri Jun 19 09:23:18 2020[1,4]<stdout>:tf2-horovod-3:262:373 [0] misc/ibvwrap.cc:212 NCCL WARN Call to ibv_open_device failed
+Fri Jun 19 09:23:18 2020[1,4]<stdout>:
+Fri Jun 19 09:23:18 2020[1,4]<stdout>:tf2-horovod-3:262:373 [0] transport/net_ib.cc:117 NCCL WARN NET/IB : Unable to open device mlx5_2
+Fri Jun 19 09:23:18 2020[1,7]<stdout>:
+Fri Jun 19 09:23:18 2020[1,7]<stdout>:tf2-horovod-6:263:352 [0] misc/ibvwrap.cc:212 NCCL WARN Call to ibv_open_device failed
+Fri Jun 19 09:23:18 2020[1,7]<stdout>:
+Fri Jun 19 09:23:18 2020[1,7]<stdout>:tf2-horovod-6:263:352 [0] transport/net_ib.cc:117 NCCL WARN NET/IB : Unable to open device mlx5_6
+Fri Jun 19 09:23:18 2020[1,7]<stdout>:
+Fri Jun 19 09:23:18 2020[1,7]<stdout>:tf2-horovod-6:263:352 [0] misc/ibvwrap.cc:212 NCCL WARN Call to ibv_open_device failed
+Fri Jun 19 09:23:18 2020[1,7]<stdout>:
+Fri Jun 19 09:23:18 2020[1,7]<stdout>:tf2-horovod-6:263:352 [0] transport/net_ib.cc:117 NCCL WARN NET/IB : Unable to open device mlx5_7
+Fri Jun 19 09:23:18 2020[1,7]<stdout>:
+Fri Jun 19 09:23:18 2020[1,7]<stdout>:tf2-horovod-6:263:352 [0] misc/ibvwrap.cc:212 NCCL WARN Call to ibv_open_device failed
+Fri Jun 19 09:23:18 2020[1,7]<stdout>:
+Fri Jun 19 09:23:18 2020[1,7]<stdout>:tf2-horovod-6:263:352 [0] transport/net_ib.cc:117 NCCL WARN NET/IB : Unable to open device mlx5_8
+Fri Jun 19 09:23:18 2020[1,7]<stdout>:
+Fri Jun 19 09:23:18 2020[1,7]<stdout>:tf2-horovod-6:263:352 [0] misc/ibvwrap.cc:212 NCCL WARN Call to ibv_open_device failed
+Fri Jun 19 09:23:18 2020[1,7]<stdout>:
+Fri Jun 19 09:23:18 2020[1,7]<stdout>:tf2-horovod-6:263:352 [0] transport/net_ib.cc:117 NCCL WARN NET/IB : Unable to open device mlx5_9
+Fri Jun 19 09:23:18 2020[1,7]<stdout>:tf2-horovod-6:263:352 [0] NCCL INFO NET/IB : Using [0]mlx5_5:1/IB ; OOB eth0:10.233.99.11<0>
+Fri Jun 19 09:23:18 2020[1,1]<stdout>:
+Fri Jun 19 09:23:18 2020[1,1]<stdout>:tf2-horovod-0:262:330 [0] misc/ibvwrap.cc:212 NCCL WARN Call to ibv_open_device failed
+Fri Jun 19 09:23:18 2020[1,1]<stdout>:
+Fri Jun 19 09:23:18 2020[1,1]<stdout>:tf2-horovod-0:262:330 [0] transport/net_ib.cc:117 NCCL WARN NET/IB : Unable to open device mlx5_5
+Fri Jun 19 09:23:18 2020[1,1]<stdout>:
+Fri Jun 19 09:23:18 2020[1,1]<stdout>:tf2-horovod-0:262:330 [0] misc/ibvwrap.cc:212 NCCL WARN Call to ibv_open_device failed
+Fri Jun 19 09:23:18 2020[1,1]<stdout>:
+Fri Jun 19 09:23:18 2020[1,1]<stdout>:tf2-horovod-0:262:330 [0] transport/net_ib.cc:117 NCCL WARN NET/IB : Unable to open device mlx5_6
+Fri Jun 19 09:23:18 2020[1,1]<stdout>:
+Fri Jun 19 09:23:18 2020[1,1]<stdout>:tf2-horovod-0:262:330 [0] misc/ibvwrap.cc:212 NCCL WARN Call to ibv_open_device failed
+Fri Jun 19 09:23:18 2020[1,1]<stdout>:
+Fri Jun 19 09:23:18 2020[1,1]<stdout>:tf2-horovod-0:262:330 [0] transport/net_ib.cc:117 NCCL WARN NET/IB : Unable to open device mlx5_7
+Fri Jun 19 09:23:18 2020[1,1]<stdout>:
+Fri Jun 19 09:23:18 2020[1,1]<stdout>:tf2-horovod-0:262:330 [0] misc/ibvwrap.cc:212 NCCL WARN Call to ibv_open_device failed
+Fri Jun 19 09:23:18 2020[1,1]<stdout>:
+Fri Jun 19 09:23:18 2020[1,1]<stdout>:tf2-horovod-0:262:330 [0] transport/net_ib.cc:117 NCCL WARN NET/IB : Unable to open device mlx5_8
+Fri Jun 19 09:23:18 2020[1,1]<stdout>:
+Fri Jun 19 09:23:18 2020[1,1]<stdout>:tf2-horovod-0:262:330 [0] misc/ibvwrap.cc:212 NCCL WARN Call to ibv_open_device failed
+Fri Jun 19 09:23:18 2020[1,1]<stdout>:
+Fri Jun 19 09:23:18 2020[1,1]<stdout>:tf2-horovod-0:262:330 [0] transport/net_ib.cc:117 NCCL WARN NET/IB : Unable to open device mlx5_9
+Fri Jun 19 09:23:18 2020[1,1]<stdout>:tf2-horovod-0:262:330 [0] NCCL INFO NET/IB : Using [0]mlx5_4:1/IB ; OOB eth0:10.233.99.9<0>
+Fri Jun 19 09:23:18 2020[1,3]<stdout>:
+Fri Jun 19 09:23:18 2020[1,3]<stdout>:tf2-horovod-2:240:329 [0] misc/ibvwrap.cc:212 NCCL WARN Call to ibv_open_device failed
+Fri Jun 19 09:23:18 2020[1,3]<stdout>:
+Fri Jun 19 09:23:18 2020[1,3]<stdout>:tf2-horovod-2:240:329 [0] transport/net_ib.cc:117 NCCL WARN NET/IB : Unable to open device mlx5_3
+Fri Jun 19 09:23:18 2020[1,3]<stdout>:
+Fri Jun 19 09:23:18 2020[1,3]<stdout>:tf2-horovod-2:240:329 [0] misc/ibvwrap.cc:212 NCCL WARN Call to ibv_open_device failed
+Fri Jun 19 09:23:18 2020[1,3]<stdout>:
+Fri Jun 19 09:23:18 2020[1,3]<stdout>:tf2-horovod-2:240:329 [0] transport/net_ib.cc:117 NCCL WARN NET/IB : Unable to open device mlx5_4
+Fri Jun 19 09:23:18 2020[1,3]<stdout>:
+Fri Jun 19 09:23:18 2020[1,3]<stdout>:tf2-horovod-2:240:329 [0] misc/ibvwrap.cc:212 NCCL WARN Call to ibv_open_device failed
+Fri Jun 19 09:23:18 2020[1,3]<stdout>:
+Fri Jun 19 09:23:18 2020[1,3]<stdout>:tf2-horovod-2:240:329 [0] transport/net_ib.cc:117 NCCL WARN NET/IB : Unable to open device mlx5_5
+Fri Jun 19 09:23:18 2020[1,3]<stdout>:
+Fri Jun 19 09:23:18 2020[1,3]<stdout>:tf2-horovod-2:240:329 [0] misc/ibvwrap.cc:212 NCCL WARN Call to ibv_open_device failed
+Fri Jun 19 09:23:18 2020[1,3]<stdout>:
+Fri Jun 19 09:23:18 2020[1,3]<stdout>:tf2-horovod-2:240:329 [0] transport/net_ib.cc:117 NCCL WARN NET/IB : Unable to open device mlx5_6
+Fri Jun 19 09:23:18 2020[1,3]<stdout>:
+Fri Jun 19 09:23:18 2020[1,3]<stdout>:tf2-horovod-2:240:329 [0] misc/ibvwrap.cc:212 NCCL WARN Call to ibv_open_device failed
+Fri Jun 19 09:23:18 2020[1,3]<stdout>:
+Fri Jun 19 09:23:18 2020[1,3]<stdout>:tf2-horovod-2:240:329 [0] transport/net_ib.cc:117 NCCL WARN NET/IB : Unable to open device mlx5_7
+Fri Jun 19 09:23:18 2020[1,3]<stdout>:
+Fri Jun 19 09:23:18 2020[1,3]<stdout>:tf2-horovod-2:240:329 [0] misc/ibvwrap.cc:212 NCCL WARN Call to ibv_open_device failed
+Fri Jun 19 09:23:18 2020[1,3]<stdout>:
+Fri Jun 19 09:23:18 2020[1,3]<stdout>:tf2-horovod-2:240:329 [0] transport/net_ib.cc:117 NCCL WARN NET/IB : Unable to open device mlx5_8
+Fri Jun 19 09:23:18 2020[1,3]<stdout>:
+Fri Jun 19 09:23:18 2020[1,3]<stdout>:tf2-horovod-2:240:329 [0] misc/ibvwrap.cc:212 NCCL WARN Call to ibv_open_device failed
+Fri Jun 19 09:23:18 2020[1,3]<stdout>:
+Fri Jun 19 09:23:18 2020[1,3]<stdout>:tf2-horovod-2:240:329 [0] transport/net_ib.cc:117 NCCL WARN NET/IB : Unable to open device mlx5_9
+Fri Jun 19 09:23:18 2020[1,3]<stdout>:tf2-horovod-2:240:329 [0] NCCL INFO NET/IB : Using [0]mlx5_2:1/IB ; OOB eth0:10.233.99.1<0>
+Fri Jun 19 09:23:18 2020[1,5]<stdout>:
+Fri Jun 19 09:23:18 2020[1,5]<stdout>:tf2-horovod-4:218:307 [0] misc/ibvwrap.cc:212 NCCL WARN Call to ibv_open_device failed
+Fri Jun 19 09:23:18 2020[1,5]<stdout>:
+Fri Jun 19 09:23:18 2020[1,5]<stdout>:tf2-horovod-4:218:307 [0] transport/net_ib.cc:117 NCCL WARN NET/IB : Unable to open device mlx5_4
+Fri Jun 19 09:23:18 2020[1,5]<stdout>:
+Fri Jun 19 09:23:18 2020[1,5]<stdout>:tf2-horovod-4:218:307 [0] misc/ibvwrap.cc:212 NCCL WARN Call to ibv_open_device failed
+Fri Jun 19 09:23:18 2020[1,5]<stdout>:
+Fri Jun 19 09:23:18 2020[1,5]<stdout>:tf2-horovod-4:218:307 [0] transport/net_ib.cc:117 NCCL WARN NET/IB : Unable to open device mlx5_5
+Fri Jun 19 09:23:18 2020[1,5]<stdout>:
+Fri Jun 19 09:23:18 2020[1,5]<stdout>:tf2-horovod-4:218:307 [0] misc/ibvwrap.cc:212 NCCL WARN Call to ibv_open_device failed
+Fri Jun 19 09:23:18 2020[1,5]<stdout>:
+Fri Jun 19 09:23:18 2020[1,5]<stdout>:tf2-horovod-4:218:307 [0] transport/net_ib.cc:117 NCCL WARN NET/IB : Unable to open device mlx5_6
+Fri Jun 19 09:23:18 2020[1,5]<stdout>:
+Fri Jun 19 09:23:18 2020[1,5]<stdout>:tf2-horovod-4:218:307 [0] misc/ibvwrap.cc:212 NCCL WARN Call to ibv_open_device failed
+Fri Jun 19 09:23:18 2020[1,5]<stdout>:
+Fri Jun 19 09:23:18 2020[1,5]<stdout>:tf2-horovod-4:218:307 [0] transport/net_ib.cc:117 NCCL WARN NET/IB : Unable to open device mlx5_7
+Fri Jun 19 09:23:18 2020[1,5]<stdout>:
+Fri Jun 19 09:23:18 2020[1,5]<stdout>:tf2-horovod-4:218:307 [0] misc/ibvwrap.cc:212 NCCL WARN Call to ibv_open_device failed
+Fri Jun 19 09:23:18 2020[1,5]<stdout>:
+Fri Jun 19 09:23:18 2020[1,5]<stdout>:tf2-horovod-4:218:307 [0] transport/net_ib.cc:117 NCCL WARN NET/IB : Unable to open device mlx5_8
+Fri Jun 19 09:23:18 2020[1,5]<stdout>:
+Fri Jun 19 09:23:18 2020[1,5]<stdout>:tf2-horovod-4:218:307 [0] misc/ibvwrap.cc:212 NCCL WARN Call to ibv_open_device failed
+Fri Jun 19 09:23:18 2020[1,5]<stdout>:
+Fri Jun 19 09:23:18 2020[1,5]<stdout>:tf2-horovod-4:218:307 [0] transport/net_ib.cc:117 NCCL WARN NET/IB : Unable to open device mlx5_9
+Fri Jun 19 09:23:18 2020[1,5]<stdout>:tf2-horovod-4:218:307 [0] NCCL INFO NET/IB : Using [0]mlx5_3:1/IB ; OOB eth0:10.233.99.10<0>
+Fri Jun 19 09:23:18 2020[1,6]<stdout>:
+Fri Jun 19 09:23:18 2020[1,6]<stdout>:tf2-horovod-5:240:351 [0] misc/ibvwrap.cc:212 NCCL WARN Call to ibv_open_device failed
+Fri Jun 19 09:23:18 2020[1,6]<stdout>:
+Fri Jun 19 09:23:18 2020[1,6]<stdout>:tf2-horovod-5:240:351 [0] transport/net_ib.cc:117 NCCL WARN NET/IB : Unable to open device mlx5_6
+Fri Jun 19 09:23:18 2020[1,6]<stdout>:
+Fri Jun 19 09:23:18 2020[1,6]<stdout>:tf2-horovod-5:240:351 [0] misc/ibvwrap.cc:212 NCCL WARN Call to ibv_open_device failed
+Fri Jun 19 09:23:18 2020[1,6]<stdout>:
+Fri Jun 19 09:23:18 2020[1,6]<stdout>:tf2-horovod-5:240:351 [0] transport/net_ib.cc:117 NCCL WARN NET/IB : Unable to open device mlx5_7
+Fri Jun 19 09:23:18 2020[1,6]<stdout>:
+Fri Jun 19 09:23:18 2020[1,6]<stdout>:tf2-horovod-5:240:351 [0] misc/ibvwrap.cc:212 NCCL WARN Call to ibv_open_device failed
+Fri Jun 19 09:23:18 2020[1,6]<stdout>:
+Fri Jun 19 09:23:18 2020[1,6]<stdout>:tf2-horovod-5:240:351 [0] transport/net_ib.cc:117 NCCL WARN NET/IB : Unable to open device mlx5_8
+Fri Jun 19 09:23:18 2020[1,6]<stdout>:
+Fri Jun 19 09:23:18 2020[1,6]<stdout>:tf2-horovod-5:240:351 [0] misc/ibvwrap.cc:212 NCCL WARN Call to ibv_open_device failed
+Fri Jun 19 09:23:18 2020[1,6]<stdout>:
+Fri Jun 19 09:23:18 2020[1,6]<stdout>:tf2-horovod-5:240:351 [0] transport/net_ib.cc:117 NCCL WARN NET/IB : Unable to open device mlx5_9
+Fri Jun 19 09:23:18 2020[1,6]<stdout>:tf2-horovod-5:240:351 [0] NCCL INFO NET/IB : Using [0]mlx5_5:1/IB ; OOB eth0:10.233.64.151<0>
+Fri Jun 19 09:23:18 2020[1,2]<stdout>:
+Fri Jun 19 09:23:18 2020[1,2]<stdout>:tf2-horovod-1:240:351 [0] misc/ibvwrap.cc:212 NCCL WARN Call to ibv_open_device failed
+Fri Jun 19 09:23:18 2020[1,2]<stdout>:
+Fri Jun 19 09:23:18 2020[1,2]<stdout>:tf2-horovod-1:240:351 [0] transport/net_ib.cc:117 NCCL WARN NET/IB : Unable to open device mlx5_3
+Fri Jun 19 09:23:18 2020[1,2]<stdout>:
+Fri Jun 19 09:23:18 2020[1,2]<stdout>:tf2-horovod-1:240:351 [0] misc/ibvwrap.cc:212 NCCL WARN Call to ibv_open_device failed
+Fri Jun 19 09:23:18 2020[1,2]<stdout>:
+Fri Jun 19 09:23:18 2020[1,2]<stdout>:tf2-horovod-1:240:351 [0] transport/net_ib.cc:117 NCCL WARN NET/IB : Unable to open device mlx5_4
+Fri Jun 19 09:23:18 2020[1,2]<stdout>:
+Fri Jun 19 09:23:18 2020[1,2]<stdout>:tf2-horovod-1:240:351 [0] misc/ibvwrap.cc:212 NCCL WARN Call to ibv_open_device failed
+Fri Jun 19 09:23:18 2020[1,2]<stdout>:
+Fri Jun 19 09:23:18 2020[1,2]<stdout>:tf2-horovod-1:240:351 [0] transport/net_ib.cc:117 NCCL WARN NET/IB : Unable to open device mlx5_5
+Fri Jun 19 09:23:18 2020[1,2]<stdout>:
+Fri Jun 19 09:23:18 2020[1,2]<stdout>:tf2-horovod-1:240:351 [0] misc/ibvwrap.cc:212 NCCL WARN Call to ibv_open_device failed
+Fri Jun 19 09:23:18 2020[1,2]<stdout>:
+Fri Jun 19 09:23:18 2020[1,2]<stdout>:tf2-horovod-1:240:351 [0] transport/net_ib.cc:117 NCCL WARN NET/IB : Unable to open device mlx5_6
+Fri Jun 19 09:23:18 2020[1,2]<stdout>:
+Fri Jun 19 09:23:18 2020[1,2]<stdout>:tf2-horovod-1:240:351 [0] misc/ibvwrap.cc:212 NCCL WARN Call to ibv_open_device failed
+Fri Jun 19 09:23:18 2020[1,2]<stdout>:
+Fri Jun 19 09:23:18 2020[1,2]<stdout>:tf2-horovod-1:240:351 [0] transport/net_ib.cc:117 NCCL WARN NET/IB : Unable to open device mlx5_7
+Fri Jun 19 09:23:18 2020[1,2]<stdout>:
+Fri Jun 19 09:23:18 2020[1,2]<stdout>:tf2-horovod-1:240:351 [0] misc/ibvwrap.cc:212 NCCL WARN Call to ibv_open_device failed
+Fri Jun 19 09:23:18 2020[1,2]<stdout>:
+Fri Jun 19 09:23:18 2020[1,2]<stdout>:tf2-horovod-1:240:351 [0] transport/net_ib.cc:117 NCCL WARN NET/IB : Unable to open device mlx5_8
+Fri Jun 19 09:23:18 2020[1,2]<stdout>:
+Fri Jun 19 09:23:18 2020[1,2]<stdout>:tf2-horovod-1:240:351 [0] misc/ibvwrap.cc:212 NCCL WARN Call to ibv_open_device failed
+Fri Jun 19 09:23:18 2020[1,2]<stdout>:
+Fri Jun 19 09:23:18 2020[1,2]<stdout>:tf2-horovod-1:240:351 [0] transport/net_ib.cc:117 NCCL WARN NET/IB : Unable to open device mlx5_9
+Fri Jun 19 09:23:18 2020[1,2]<stdout>:tf2-horovod-1:240:351 [0] NCCL INFO NET/IB : Using [0]mlx5_2:1/IB ; OOB eth0:10.233.64.150<0>
+Fri Jun 19 09:23:18 2020[1,4]<stdout>:
+Fri Jun 19 09:23:18 2020[1,4]<stdout>:tf2-horovod-3:262:373 [0] misc/ibvwrap.cc:212 NCCL WARN Call to ibv_open_device failed
+Fri Jun 19 09:23:18 2020[1,4]<stdout>:
+Fri Jun 19 09:23:18 2020[1,4]<stdout>:tf2-horovod-3:262:373 [0] transport/net_ib.cc:117 NCCL WARN NET/IB : Unable to open device mlx5_4
+Fri Jun 19 09:23:18 2020[1,4]<stdout>:
+Fri Jun 19 09:23:18 2020[1,4]<stdout>:tf2-horovod-3:262:373 [0] misc/ibvwrap.cc:212 NCCL WARN Call to ibv_open_device failed
+Fri Jun 19 09:23:18 2020[1,4]<stdout>:
+Fri Jun 19 09:23:18 2020[1,4]<stdout>:tf2-horovod-3:262:373 [0] transport/net_ib.cc:117 NCCL WARN NET/IB : Unable to open device mlx5_5
+Fri Jun 19 09:23:18 2020[1,4]<stdout>:
+Fri Jun 19 09:23:18 2020[1,4]<stdout>:tf2-horovod-3:262:373 [0] misc/ibvwrap.cc:212 NCCL WARN Call to ibv_open_device failed
+Fri Jun 19 09:23:18 2020[1,4]<stdout>:
+Fri Jun 19 09:23:18 2020[1,4]<stdout>:tf2-horovod-3:262:373 [0] transport/net_ib.cc:117 NCCL WARN NET/IB : Unable to open device mlx5_6
+Fri Jun 19 09:23:18 2020[1,4]<stdout>:
+Fri Jun 19 09:23:18 2020[1,4]<stdout>:tf2-horovod-3:262:373 [0] misc/ibvwrap.cc:212 NCCL WARN Call to ibv_open_device failed
+Fri Jun 19 09:23:18 2020[1,4]<stdout>:
+Fri Jun 19 09:23:18 2020[1,4]<stdout>:tf2-horovod-3:262:373 [0] transport/net_ib.cc:117 NCCL WARN NET/IB : Unable to open device mlx5_7
+Fri Jun 19 09:23:18 2020[1,4]<stdout>:
+Fri Jun 19 09:23:18 2020[1,4]<stdout>:tf2-horovod-3:262:373 [0] misc/ibvwrap.cc:212 NCCL WARN Call to ibv_open_device failed
+Fri Jun 19 09:23:18 2020[1,4]<stdout>:
+Fri Jun 19 09:23:18 2020[1,4]<stdout>:tf2-horovod-3:262:373 [0] transport/net_ib.cc:117 NCCL WARN NET/IB : Unable to open device mlx5_8
+Fri Jun 19 09:23:18 2020[1,4]<stdout>:
+Fri Jun 19 09:23:18 2020[1,4]<stdout>:tf2-horovod-3:262:373 [0] misc/ibvwrap.cc:212 NCCL WARN Call to ibv_open_device failed
+Fri Jun 19 09:23:18 2020[1,4]<stdout>:
+Fri Jun 19 09:23:18 2020[1,4]<stdout>:tf2-horovod-3:262:373 [0] transport/net_ib.cc:117 NCCL WARN NET/IB : Unable to open device mlx5_9
+Fri Jun 19 09:23:18 2020[1,4]<stdout>:tf2-horovod-3:262:373 [0] NCCL INFO NET/IB : Using [0]mlx5_3:1/IB ; OOB eth0:10.233.64.152<0>
+Fri Jun 19 09:23:18 2020[1,1]<stdout>:tf2-horovod-0:262:330 [0] NCCL INFO Setting affinity for GPU 0 to aaaaaaaa,aaaaaaaa
+Fri Jun 19 09:23:18 2020[1,7]<stdout>:tf2-horovod-6:263:352 [0] NCCL INFO Setting affinity for GPU 0 to 55555555,55555555
+Fri Jun 19 09:23:18 2020[1,3]<stdout>:tf2-horovod-2:240:329 [0] NCCL INFO Setting affinity for GPU 0 to 55555555,55555555
+Fri Jun 19 09:23:18 2020[1,5]<stdout>:tf2-horovod-4:218:307 [0] NCCL INFO Setting affinity for GPU 0 to aaaaaaaa,aaaaaaaa
+Fri Jun 19 09:23:18 2020[1,2]<stdout>:tf2-horovod-1:240:351 [0] NCCL INFO Setting affinity for GPU 0 to 55555555,55555555
+Fri Jun 19 09:23:18 2020[1,6]<stdout>:tf2-horovod-5:240:351 [0] NCCL INFO Setting affinity for GPU 0 to aaaaaaaa,aaaaaaaa
+Fri Jun 19 09:23:18 2020[1,4]<stdout>:tf2-horovod-3:262:373 [0] NCCL INFO Setting affinity for GPU 0 to aaaaaaaa,aaaaaaaa
+Fri Jun 19 09:23:18 2020[1,5]<stdout>:tf2-horovod-4:218:307 [0] NCCL INFO CUDA Dev 0[3], IB NIC distance :  PHB
+Fri Jun 19 09:23:18 2020[1,7]<stdout>:tf2-horovod-6:263:352 [0] NCCL INFO CUDA Dev 0[1], IB NIC distance :  SYS
+Fri Jun 19 09:23:18 2020[1,3]<stdout>:tf2-horovod-2:240:329 [0] NCCL INFO CUDA Dev 0[0], IB NIC distance :  SYS
+Fri Jun 19 09:23:18 2020[1,1]<stdout>:tf2-horovod-0:262:330 [0] NCCL INFO CUDA Dev 0[2], IB NIC distance :  PHB
+Fri Jun 19 09:23:18 2020[1,0]<stdout>:tf2-horovod-lsczz:30:97 [0] NCCL INFO CUDA Dev 0[1], IB NIC distance :  SYS
+Fri Jun 19 09:23:18 2020[1,4]<stdout>:tf2-horovod-3:262:373 [0] NCCL INFO CUDA Dev 0[2], IB NIC distance :  PHB
+Fri Jun 19 09:23:18 2020[1,6]<stdout>:tf2-horovod-5:240:351 [0] NCCL INFO CUDA Dev 0[3], IB NIC distance :  PHB
+Fri Jun 19 09:23:18 2020[1,2]<stdout>:tf2-horovod-1:240:351 [0] NCCL INFO CUDA Dev 0[0], IB NIC distance :  SYS
+Fri Jun 19 09:23:18 2020[1,0]<stdout>:tf2-horovod-lsczz:30:97 [0] NCCL INFO Channel 00 :    0   1   2   3   4   5   6   7
+Fri Jun 19 09:23:18 2020[1,1]<stdout>:tf2-horovod-0:262:330 [0] NCCL INFO Ring 00 : 0 -> 1 [receive] via NET/IB/0
+Fri Jun 19 09:23:18 2020[1,7]<stdout>:tf2-horovod-6:263:352 [0] NCCL INFO Ring 00 : 6 -> 7 [receive] via NET/IB/0
+Fri Jun 19 09:23:18 2020[1,3]<stdout>:tf2-horovod-2:240:329 [0] NCCL INFO Ring 00 : 2 -> 3 [receive] via NET/IB/0
+Fri Jun 19 09:23:18 2020[1,5]<stdout>:tf2-horovod-4:218:307 [0] NCCL INFO Ring 00 : 4 -> 5 [receive] via NET/IB/0
+Fri Jun 19 09:23:18 2020[1,6]<stdout>:tf2-horovod-5:240:351 [0] NCCL INFO Ring 00 : 5 -> 6 [receive] via NET/IB/0
+Fri Jun 19 09:23:18 2020[1,0]<stdout>:tf2-horovod-lsczz:30:97 [0] NCCL INFO Ring 00 : 7 -> 0 [receive] via NET/IB/0
+Fri Jun 19 09:23:18 2020[1,2]<stdout>:tf2-horovod-1:240:351 [0] NCCL INFO Ring 00 : 1 -> 2 [receive] via NET/IB/0
+Fri Jun 19 09:23:18 2020[1,4]<stdout>:tf2-horovod-3:262:373 [0] NCCL INFO Ring 00 : 3 -> 4 [receive] via NET/IB/0
+Fri Jun 19 09:23:18 2020[1,1]<stdout>:tf2-horovod-0:262:330 [0] NCCL INFO Ring 00 : 1 -> 2 [send] via NET/IB/0
+Fri Jun 19 09:23:18 2020[1,7]<stdout>:tf2-horovod-6:263:352 [0] NCCL INFO Ring 00 : 7 -> 0 [send] via NET/IB/0
+Fri Jun 19 09:23:18 2020[1,5]<stdout>:tf2-horovod-4:218:307 [0] NCCL INFO Ring 00 : 5 -> 6 [send] via NET/IB/0
+Fri Jun 19 09:23:18 2020[1,3]<stdout>:tf2-horovod-2:240:329 [0] NCCL INFO Ring 00 : 3 -> 4 [send] via NET/IB/0
+Fri Jun 19 09:23:18 2020[1,6]<stdout>:tf2-horovod-5:240:351 [0] NCCL INFO Ring 00 : 6 -> 7 [send] via NET/IB/0
+Fri Jun 19 09:23:18 2020[1,0]<stdout>:tf2-horovod-lsczz:30:97 [0] NCCL INFO Ring 00 : 0 -> 1 [send] via NET/IB/0
+Fri Jun 19 09:23:18 2020[1,2]<stdout>:tf2-horovod-1:240:351 [0] NCCL INFO Ring 00 : 2 -> 3 [send] via NET/IB/0
+Fri Jun 19 09:23:18 2020[1,4]<stdout>:tf2-horovod-3:262:373 [0] NCCL INFO Ring 00 : 4 -> 5 [send] via NET/IB/0
+Fri Jun 19 09:23:18 2020[1,0]<stdout>:tf2-horovod-lsczz:30:97 [0] NCCL INFO Using 256 threads, Min Comp Cap 6, Trees disabled
+Fri Jun 19 09:23:18 2020[1,0]<stdout>:tf2-horovod-lsczz:30:97 [0] NCCL INFO comm 0x7f95f4425da0 rank 0 nranks 8 cudaDev 0 nvmlDev 1 - Init COMPLETE
+Fri Jun 19 09:23:18 2020[1,0]<stdout>:tf2-horovod-lsczz:30:97 [0] NCCL INFO Launch mode Parallel
+Fri Jun 19 09:23:18 2020[1,1]<stdout>:tf2-horovod-0:262:330 [0] NCCL INFO comm 0x7fccb0370990 rank 1 nranks 8 cudaDev 0 nvmlDev 2 - Init COMPLETE
+Fri Jun 19 09:23:18 2020[1,5]<stdout>:tf2-horovod-4:218:307 [0] NCCL INFO comm 0x7fb2d8378920 rank 5 nranks 8 cudaDev 0 nvmlDev 3 - Init COMPLETE
+Fri Jun 19 09:23:18 2020[1,3]<stdout>:tf2-horovod-2:240:329 [0] NCCL INFO comm 0x7feba0378ee0 rank 3 nranks 8 cudaDev 0 nvmlDev 0 - Init COMPLETE
+Fri Jun 19 09:23:18 2020[1,7]<stdout>:tf2-horovod-6:263:352 [0] NCCL INFO comm 0x7f021c3788e0 rank 7 nranks 8 cudaDev 0 nvmlDev 1 - Init COMPLETE
+Fri Jun 19 09:23:18 2020[1,2]<stdout>:tf2-horovod-1:240:351 [0] NCCL INFO comm 0x7f242c371050 rank 2 nranks 8 cudaDev 0 nvmlDev 0 - Init COMPLETE
+Fri Jun 19 09:23:18 2020[1,4]<stdout>:tf2-horovod-3:262:373 [0] NCCL INFO comm 0x7f2488371220 rank 4 nranks 8 cudaDev 0 nvmlDev 2 - Init COMPLETE
+Fri Jun 19 09:23:18 2020[1,6]<stdout>:tf2-horovod-5:240:351 [0] NCCL INFO comm 0x7ff3d0379280 rank 6 nranks 8 cudaDev 0 nvmlDev 3 - Init COMPLETE
+Fri Jun 19 09:23:28 2020[1,0]<stdout>:Running benchmark...
+Fri Jun 19 09:23:30 2020[1,0]<stdout>:Iter #0: 136.6 img/sec per GPU
+Fri Jun 19 09:23:32 2020[1,0]<stdout>:Iter #1: 136.4 img/sec per GPU
+Fri Jun 19 09:23:35 2020[1,0]<stdout>:Iter #2: 134.5 img/sec per GPU
+Fri Jun 19 09:23:37 2020[1,0]<stdout>:Iter #3: 132.1 img/sec per GPU
+Fri Jun 19 09:23:39 2020[1,0]<stdout>:Iter #4: 134.9 img/sec per GPU
+Fri Jun 19 09:23:42 2020[1,0]<stdout>:Iter #5: 134.3 img/sec per GPU
+Fri Jun 19 09:23:44 2020[1,0]<stdout>:Iter #6: 132.1 img/sec per GPU
+Fri Jun 19 09:23:47 2020[1,0]<stdout>:Iter #7: 134.8 img/sec per GPU
+Fri Jun 19 09:23:49 2020[1,0]<stdout>:Iter #8: 134.7 img/sec per GPU
+Fri Jun 19 09:23:51 2020[1,0]<stdout>:Iter #9: 134.5 img/sec per GPU
+Fri Jun 19 09:23:51 2020[1,0]<stdout>:Img/sec per GPU: 134.5 +-2.8
+Fri Jun 19 09:23:51 2020[1,0]<stdout>:Total img/sec on 8 GPU(s): 1076.1 +-22.2
